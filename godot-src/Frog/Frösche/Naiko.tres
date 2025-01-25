@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FrogAssets" load_steps=9 format=3 uid="uid://r72ttc66doif"]
+[gd_resource type="Resource" script_class="FrogAssets" load_steps=10 format=3 uid="uid://r72ttc66doif"]
 
 [ext_resource type="Texture2D" uid="uid://dp055h8jxlr7e" path="res://Frog/Frösche/frosch naiko/frachiganz_arm_links.png" id="1_46jm3"]
 [ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_f4f6g"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://mglatd51kogy" path="res://Frog/Frösche/frosch naiko/frachiganz_happy_Naika.png" id="5_mj0ak"]
 [ext_resource type="Texture2D" uid="uid://cxqjb8liga4p0" path="res://Frog/Frösche/frosch naiko/frachiganz_fuss_links.png" id="6_bjnly"]
 [ext_resource type="Texture2D" uid="uid://c7hlytey17byw" path="res://Frog/Frösche/frosch naiko/frachiganz_fuss_rechts.png" id="7_1p6cs"]
+[ext_resource type="Texture2D" uid="uid://ct4o6qqwj8su5" path="res://Frog/Frösche/frosch naiko/frachiganz_nase.png" id="8_uy3hp"]
 
 [resource]
 script = ExtResource("1_f4f6g")
@@ -19,4 +20,5 @@ LegRight = ExtResource("7_1p6cs")
 ArmLef = ExtResource("1_46jm3")
 ArmRight = ExtResource("2_tc3pl")
 Happy = ExtResource("5_mj0ak")
+Nose = ExtResource("8_uy3hp")
 Augen = ExtResource("3_5vnb4")

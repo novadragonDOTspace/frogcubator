@@ -23,6 +23,8 @@ func _process(_delta: float) -> void:
 
 	if !Frog == null:
 		label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog.VitalTimer.time_left)
+		$Schlauch.global_position = Frog.Schlauchpunkt.global_position
+
 	else:
 		label.text = "Score:" + str(score)
 
@@ -30,7 +32,7 @@ func _process(_delta: float) -> void:
 
 func _on_end_timer_timeout() -> void:
 		state = GlobalStateEnum.result
-		
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_button"):

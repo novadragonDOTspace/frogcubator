@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=16 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog_base_scene.tscn" id="1_q7cwp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://dl2hvcwlnc0ab" path="res://Frog/Frösche/Daniel.tres" id="7_5q81m"]
 [ext_resource type="Resource" uid="uid://r72ttc66doif" path="res://Frog/Frösche/Naiko.tres" id="8_6ofd6"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="11_hik51"]
+[ext_resource type="Texture2D" uid="uid://dhcpt0nui4h3i" path="res://schlauch.png" id="15_ifhhe"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cn5yq")
@@ -21,23 +22,6 @@ PackedSceneFrog = ExtResource("1_q7cwp")
 DeathPenalty = 200
 VitalityIncrease = 200
 FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
-
-[node name="PauseScreen" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="PauseScreen"]
-modulate = Color(1, 1, 1, 0.854902)
-position = Vector2(578.5, 315.5)
-scale = Vector2(4.55294, 3.37879)
-texture = ExtResource("2_b7csg")
-
-[node name="Label" type="Label" parent="PauseScreen"]
-offset_left = 322.0
-offset_top = 210.0
-offset_right = 901.0
-offset_bottom = 483.0
-theme_override_font_sizes/font_size = 200
-text = "Pause"
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -60,6 +44,13 @@ text = "Pause"
 position = Vector2(568, -162)
 scale = Vector2(0.1, 0.1)
 
+[node name="Schlauch" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-115, 112)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_ifhhe")
+offset = Vector2(1240, 53)
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 46.0
 offset_top = 42.0
@@ -75,6 +66,7 @@ position = Vector2(562, 437)
 
 [node name="Splosion" type="Sprite2D" parent="."]
 visible = false
+z_index = 2
 position = Vector2(534.125, 318)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("5_qpwgr")
@@ -86,6 +78,23 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(578, 323)
 script = ExtResource("11_hik51")
+
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseScreen"]
+modulate = Color(1, 1, 1, 0.854902)
+position = Vector2(578.5, 315.5)
+scale = Vector2(4.55294, 3.37879)
+texture = ExtResource("2_b7csg")
+
+[node name="Label" type="Label" parent="PauseScreen"]
+offset_left = 322.0
+offset_top = 210.0
+offset_right = 901.0
+offset_bottom = 483.0
+theme_override_font_sizes/font_size = 200
+text = "Pause"
 
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
 [connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]

@@ -7,7 +7,7 @@ var nomen: String
 
 @onready var Eyes = $Eyes
 @onready var FrogBody: Area2D = $FrogBody
-
+@onready var Schlauchpunkt: Marker2D = $Schlauchpunkt
 
 enum StateEnum {goldilocks, splode, asphyxiation, vital, pause}
 var state: StateEnum
