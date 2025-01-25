@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FrogAssets" load_steps=11 format=3 uid="uid://cm2ddj6vxm51w"]
+
+[ext_resource type="Texture2D" uid="uid://d0h6pomie08wm" path="res://Frog/Frösche/Frosch Ben/frachiganz_arm_links.png" id="1_qq1e0"]
+[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_ubtvb"]
+[ext_resource type="Texture2D" uid="uid://d104ifhopqea3" path="res://Frog/Frösche/Frosch Ben/frachiganz_spatz.png" id="1_vm32v"]
+[ext_resource type="Texture2D" uid="uid://cx7u0oa5wsndq" path="res://Frog/Frösche/Frosch Ben/frachiganz_arm_rechts.png" id="2_rgv1y"]
+[ext_resource type="Texture2D" uid="uid://cvp5rin113pu4" path="res://Frog/Frösche/Frosch Ben/frachiganz_Augen.png" id="3_k8sq0"]
+[ext_resource type="Texture2D" uid="uid://dyb7f7dgmk81u" path="res://Frog/Frösche/Frosch Ben/frachiganz_koerper.png" id="4_2r365"]
+[ext_resource type="Texture2D" uid="uid://p2277kvv05jp" path="res://Frog/Frösche/Frosch Ben/frachiganz_fuss_links.png" id="5_xs61y"]
+[ext_resource type="Texture2D" uid="uid://c8whobn26trpg" path="res://Frog/Frösche/Frosch Ben/frachiganz_fuss_rechts.png" id="6_4axf3"]
+[ext_resource type="Texture2D" uid="uid://yg14pfue57o1" path="res://Frog/Frösche/Frosch Ben/frachiganz_happy_ben.png" id="6_7vapq"]
+[ext_resource type="Texture2D" uid="uid://bk5fp3xlfcv4g" path="res://Frog/Frösche/Frosch Ben/frachiganz_nase.png" id="7_nne73"]
+
+[resource]
+script = ExtResource("1_ubtvb")
+Name = "Ben"
+Allegiance = true
+Body = ExtResource("4_2r365")
+LegLeft = ExtResource("5_xs61y")
+LegRight = ExtResource("6_4axf3")
+ArmLef = ExtResource("1_qq1e0")
+ArmRight = ExtResource("2_rgv1y")
+Happy = ExtResource("6_7vapq")
+Accesoire1 = ExtResource("1_vm32v")
+Nose = ExtResource("7_nne73")
+Augen = ExtResource("3_k8sq0")

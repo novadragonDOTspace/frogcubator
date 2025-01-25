@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FrogAssets" load_steps=11 format=3 uid="uid://gc30vx0h4l4v"]
+
+[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_go6cl"]
+[ext_resource type="Texture2D" uid="uid://b8acn82456vbf" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_harre.png" id="1_m20bt"]
+[ext_resource type="Texture2D" uid="uid://il74ridafe5" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_arm_links.png" id="2_ltgi5"]
+[ext_resource type="Texture2D" uid="uid://6msbfii6hfay" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_Augen.png" id="3_pw8fy"]
+[ext_resource type="Texture2D" uid="uid://b0acjfkkmi8ot" path="res://Frog/Frösche/Frosch blondi 3/franchiganz_arm_rechts.png" id="4_2eili"]
+[ext_resource type="Texture2D" uid="uid://cdtnaf7bl8k0v" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_koerper.png" id="5_mrs63"]
+[ext_resource type="Texture2D" uid="uid://tcewgxfb1lcx" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_happy_blondy.png" id="6_xwr83"]
+[ext_resource type="Texture2D" uid="uid://dtyo6axfsdreg" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_fuss_links.png" id="7_21en2"]
+[ext_resource type="Texture2D" uid="uid://cpip444rskanm" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_fuss_rechts.png" id="8_sbna0"]
+[ext_resource type="Texture2D" uid="uid://3838gibsr6hr" path="res://Frog/Frösche/Frosch blondi 3/frachiganz_nase.png" id="9_5bd78"]
+
+[resource]
+script = ExtResource("1_go6cl")
+Name = "Blondi"
+Allegiance = false
+Body = ExtResource("5_mrs63")
+LegLeft = ExtResource("7_21en2")
+LegRight = ExtResource("8_sbna0")
+ArmLef = ExtResource("2_ltgi5")
+ArmRight = ExtResource("3_pw8fy")
+Happy = ExtResource("6_xwr83")
+Accesoire1 = ExtResource("1_m20bt")
+Nose = ExtResource("9_5bd78")
+Augen = ExtResource("4_2eili")

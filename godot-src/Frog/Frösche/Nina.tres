@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="FrogAssets" load_steps=10 format=3 uid="uid://bkh0ff5atbtes"]
+
+[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_7orc0"]
+[ext_resource type="Texture2D" uid="uid://ctqda14lx2tuk" path="res://Frog/Frösche/frosch nina2/frachiganz_arm_links.png" id="1_lw7me"]
+[ext_resource type="Texture2D" uid="uid://dgb177p4ttgnu" path="res://Frog/Frösche/frosch nina2/frachiganz_arm_rechts.png" id="2_f7hk2"]
+[ext_resource type="Texture2D" uid="uid://beb03da6veqgm" path="res://Frog/Frösche/frosch nina2/frachiganz_Augen.png" id="3_08bpy"]
+[ext_resource type="Texture2D" uid="uid://dqcwklxcld5t1" path="res://Frog/Frösche/frosch nina2/frachiganz_koerper.png" id="4_ks08n"]
+[ext_resource type="Texture2D" uid="uid://bu8w0tsbe03yr" path="res://Frog/Frösche/frosch nina2/Frosch_happy_nina.png" id="5_0xhba"]
+[ext_resource type="Texture2D" uid="uid://dmxyor2ep2guq" path="res://Frog/Frösche/frosch nina2/frachiganz_fuss_links.png" id="6_kwtq5"]
+[ext_resource type="Texture2D" uid="uid://d0vqe7btccudr" path="res://Frog/Frösche/frosch nina2/frachiganz_fuss_rechts.png" id="7_t3vfr"]
+[ext_resource type="Texture2D" uid="uid://cyr0rqi2wj57p" path="res://Frog/Frösche/frosch nina2/frachiganz_nase.png" id="8_2i5p0"]
+
+[resource]
+script = ExtResource("1_7orc0")
+Name = ""
+Allegiance = false
+Body = ExtResource("4_ks08n")
+LegLeft = ExtResource("6_kwtq5")
+LegRight = ExtResource("7_t3vfr")
+ArmLef = ExtResource("1_lw7me")
+ArmRight = ExtResource("2_f7hk2")
+Happy = ExtResource("5_0xhba")
+Nose = ExtResource("8_2i5p0")
+Augen = ExtResource("3_08bpy")

@@ -1,10 +1,17 @@
-extends Node2D
+extends Area2D
 class_name Frog
 
-@export var Legs: Array[CompressedTexture2D]
-@export var Eyes: Array[Texture2D]
-@onready var LungenKollapsierer: Timer = $LungenKollapsierer
+var nomen: String
 
+
+
+@onready var Eyes = $Eyes
+@onready var FrogBody: Area2D = $FrogBody
+
+
+enum StateEnum {goldilocks, splode, asphyxiation, vital, pause}
+var state: StateEnum
+var PrePauseState: StateEnum
 
 signal death(allegiance: bool, state: StateEnum)
 signal vital(allegiance: bool)
@@ -18,18 +25,25 @@ var MinGoldiLocks: float
 var LungenKollapsPerSekunde: float = 2
 var InputFloat: float
 var Allegiance: bool = true
-enum StateEnum {goldilocks, splode, asphyxiation, vital, pause}
-var state: StateEnum
-var PrePauseState: StateEnum
+
 @onready var VitalTimer: Timer = $VitalTimer
+@onready var LungenKollapsierer: Timer = $LungenKollapsierer
 
 
-@onready var EyeLeft = $EyeLeft
-@onready var EyeRight = $EyeRight
-@onready var FrogBody: Area2D = $FrogBody
-
-func initialize(pos):
+func initialize(pos, frogres: FrogAssets):
+	print(frogres.Name)
 	position = pos
+	var body: Sprite2D = $Body
+	body.texture = frogres.Body
+	Allegiance = frogres.Allegiance
+	nomen = frogres.Name
+	$Eyes.texture = frogres.Augen
+	$ArmLeft.texture = frogres.ArmLef
+	$ArmRight.texture = frogres.ArmRight
+	$LegLeft.texture = frogres.LegLeft
+	$LegRight.texture = frogres.LegRight
+	$Nase2.texture = frogres.Nose
+	$Accesoire1.texture = frogres.Accesoire1
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,9 +55,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	match state:
 		StateEnum.goldilocks:
-			EyeLeft.global_position = $FrogBody/EyeLeft.global_position
-			EyeRight.global_position = $FrogBody/EyeRight.global_position
-
+	
 			CurrentLungenKapazität += InputFloat * 15
 			if CurrentLungenKapazität > MaxLungenKapazität:
 				print("Splode Size")
@@ -51,7 +63,7 @@ func _process(_delta: float) -> void:
 			if CurrentLungenKapazität < MinLungenKapazität:
 				state = StateEnum.asphyxiation
 			FrogScalar = CurrentLungenKapazität / (MinLungenKapazität + MaxLungenKapazität / 2) * 3
-			FrogBody.scale = Vector2(FrogScalar / 0.75, FrogScalar)
+			scale = Vector2(FrogScalar, FrogScalar)
 			InputFloat = 0
 		StateEnum.splode:
 			print("StateSplode")
@@ -85,12 +97,11 @@ func _on_lungen_kollapsierer_timeout() -> void:
 		CurrentLungenKapazität -= LungenKollapsPerSekunde
 
 
-func _on_frog_body_area_entered(area: Area2D) -> void:
-	if (area.name == "Gurke"):
-		print("Splode Gurke")
-		state = StateEnum.splode
-
-
 func _on_vital_timer_timeout() -> void:
 	state = StateEnum.vital
 	vital.emit()
+
+func _on_body_entered(body: Node2D) -> void:
+	if (body.name == "Gurke"):
+		print("Splode Gurke")
+		state = StateEnum.splode

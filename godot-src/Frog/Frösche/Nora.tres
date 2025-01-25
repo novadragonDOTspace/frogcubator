@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FrogAssets" load_steps=11 format=3 uid="uid://ymrn2voc8wjs"]
+
+[ext_resource type="Texture2D" uid="uid://biya03o8yv5ki" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_Schleife.png" id="1_4f5dr"]
+[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_xdaf1"]
+[ext_resource type="Texture2D" uid="uid://dtcyss5qgnyta" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_arm_links.png" id="2_8ru61"]
+[ext_resource type="Texture2D" uid="uid://oym6tsyws3qv" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_Augen.png" id="3_n4l8p"]
+[ext_resource type="Texture2D" uid="uid://c6ls43k6knq4q" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_arm_rechts.png" id="3_pgvtu"]
+[ext_resource type="Texture2D" uid="uid://g5g7utjsh2vm" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_koerper.png" id="5_vvny7"]
+[ext_resource type="Texture2D" uid="uid://331q5fdxg3p3" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_happy_nora.png" id="6_rluwm"]
+[ext_resource type="Texture2D" uid="uid://b8ii3oalt1d4a" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_fuss_links.png" id="7_2iu5a"]
+[ext_resource type="Texture2D" uid="uid://qklm1hhc75kn" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_fuss_rechts.png" id="8_6i5w2"]
+[ext_resource type="Texture2D" uid="uid://vo5c24gxt32u" path="res://Frog/Frösche/Frosch Nora 2/frachiganz_nase.png" id="9_yq63d"]
+
+[resource]
+script = ExtResource("1_xdaf1")
+Name = "Nora"
+Allegiance = true
+Body = ExtResource("5_vvny7")
+LegLeft = ExtResource("7_2iu5a")
+LegRight = ExtResource("8_6i5w2")
+ArmLef = ExtResource("2_8ru61")
+ArmRight = ExtResource("3_pgvtu")
+Happy = ExtResource("6_rluwm")
+Accesoire1 = ExtResource("1_4f5dr")
+Nose = ExtResource("9_yq63d")
+Augen = ExtResource("3_n4l8p")

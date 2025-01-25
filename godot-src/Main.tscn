@@ -1,16 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=15 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog_base_scene.tscn" id="1_q7cwp"]
 [ext_resource type="Texture2D" uid="uid://bo58dxcm3f4nx" path="res://grey block of nothingness.png" id="2_b7csg"]
+[ext_resource type="Script" path="res://Frog/frog_design.gd" id="3_0roxc"]
+[ext_resource type="Resource" uid="uid://bm63b0xho8u7c" path="res://Frog/Frösche/norman.tres" id="4_1obk1"]
+[ext_resource type="Resource" uid="uid://gc30vx0h4l4v" path="res://Frog/Frösche/Blondi.tres" id="4_7yntd"]
 [ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="4_e2241"]
+[ext_resource type="Resource" uid="uid://bkh0ff5atbtes" path="res://Frog/Frösche/Nina.tres" id="5_87acx"]
+[ext_resource type="Resource" uid="uid://cm2ddj6vxm51w" path="res://Frog/Frösche/ben.tres" id="5_g23t1"]
 [ext_resource type="Texture2D" uid="uid://dggugbmotlo1t" path="res://Splosion.png" id="5_qpwgr"]
+[ext_resource type="Resource" uid="uid://ymrn2voc8wjs" path="res://Frog/Frösche/Nora.tres" id="6_fn6o2"]
+[ext_resource type="Resource" uid="uid://dl2hvcwlnc0ab" path="res://Frog/Frösche/Daniel.tres" id="7_5q81m"]
+[ext_resource type="Resource" uid="uid://r72ttc66doif" path="res://Frog/Frösche/Naiko.tres" id="8_6ofd6"]
+[ext_resource type="Script" path="res://camera_2d.gd" id="11_hik51"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cn5yq")
 PackedSceneFrog = ExtResource("1_q7cwp")
 DeathPenalty = 200
 VitalityIncrease = 200
+FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
 
 [node name="PauseScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -29,8 +39,25 @@ offset_bottom = 483.0
 theme_override_font_sizes/font_size = 200
 text = "Pause"
 
+[node name="VictoryScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="VictoryScreen"]
+modulate = Color(1, 1, 1, 0.854902)
+position = Vector2(578.5, 315.5)
+scale = Vector2(4.55294, 3.37879)
+texture = ExtResource("2_b7csg")
+
+[node name="Label" type="Label" parent="VictoryScreen"]
+offset_left = 322.0
+offset_top = 210.0
+offset_right = 901.0
+offset_bottom = 483.0
+theme_override_font_sizes/font_size = 200
+text = "Pause"
+
 [node name="Gurke" parent="." instance=ExtResource("4_e2241")]
-position = Vector2(544, -120)
+position = Vector2(568, -162)
 scale = Vector2(0.1, 0.1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -44,7 +71,7 @@ wait_time = 150.0
 one_shot = true
 
 [node name="FrogPos" type="Marker2D" parent="."]
-position = Vector2(554, 526)
+position = Vector2(562, 437)
 
 [node name="Splosion" type="Sprite2D" parent="."]
 visible = false
@@ -55,6 +82,10 @@ texture = ExtResource("5_qpwgr")
 [node name="Timer" type="Timer" parent="Splosion"]
 wait_time = 0.5
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(578, 323)
+script = ExtResource("11_hik51")
 
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
 [connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]
