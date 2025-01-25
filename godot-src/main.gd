@@ -13,25 +13,31 @@ var prePauseState: GlobalStateEnum
 var score: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(str(FrogRessources.size()))
 	InstanceFrog()
+	state = GlobalStateEnum.game
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	print(str(FrogRessources.size()))
+	match state:
+		GlobalStateEnum.game:
+			print(str(FrogRessources.size()))
+			$Schlauch.position = Frog.Schlauchpunkt.position
 
-	if !Frog == null:
-		label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog.VitalTimer.time_left)
-		$Schlauch.global_position = Frog.Schlauchpunkt.global_position
+			if !Frog == null:
+				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog.VitalTimer.time_left)
+			else:
+				label.text = "Score:" + str(score)
 
-	else:
-		label.text = "Score:" + str(score)
+			$VictoryScreen/Label.text = "Score:" + str(score)
+		GlobalStateEnum.result:
+			pass
 
-	$VictoryScreen/Label.text = "Score:" + str(score)
 
 func _on_end_timer_timeout() -> void:
 		state = GlobalStateEnum.result
+		Frog.state = Frog.StateEnum.pause
+		$VictoryScreen.show()
 
 
 func _input(event: InputEvent) -> void:
@@ -57,10 +63,9 @@ func PauseSwitcher() -> void:
 		Frog.VitalTimer.paused = true
 
 
-	
 func _on_frog_base_scene_death(allegiance: bool, cause: Variant) -> void:
 	print("BSCD")
-	frogs_processed+=1
+	frogs_processed += 1
 
 	if allegiance:
 		score -= DeathPenalty
@@ -79,7 +84,7 @@ func _on_frog_base_scene_vital(allegiance: bool) -> void:
 		score += VitalityIncrease
 	else:
 		score -= DeathPenalty
-	frogs_processed+=1
+	frogs_processed += 1
 	InstanceFrog()
 
 func InstanceFrog():
@@ -94,3 +99,13 @@ func InstanceFrog():
 func _on_splosion_timer_timeout() -> void:
 	$Splosion.hide()
 	InstanceFrog()
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.
+	frogs_processed = 0
+	score = 0
+	state = GlobalStateEnum.game
+	$VictoryScreen.hide()
+	InstanceFrog()
+	$EndTimer.start()

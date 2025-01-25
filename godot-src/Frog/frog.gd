@@ -4,10 +4,11 @@ class_name Frog
 var nomen: String
 
 
-
 @onready var Eyes = $Eyes
 @onready var FrogBody: Area2D = $FrogBody
 @onready var Schlauchpunkt: Marker2D = $Schlauchpunkt
+@onready var Happy: Sprite2D = $Happy
+@onready var HappyTimer: Timer = $Happy/Timer
 
 enum StateEnum {goldilocks, splode, asphyxiation, vital, pause}
 var state: StateEnum

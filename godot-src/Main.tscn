@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
-[ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog_base_scene.tscn" id="1_q7cwp"]
+[ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="1_q7cwp"]
 [ext_resource type="Texture2D" uid="uid://bo58dxcm3f4nx" path="res://grey block of nothingness.png" id="2_b7csg"]
 [ext_resource type="Script" path="res://Frog/frog_design.gd" id="3_0roxc"]
 [ext_resource type="Resource" uid="uid://bm63b0xho8u7c" path="res://Frog/Frösche/norman.tres" id="4_1obk1"]
@@ -22,6 +22,7 @@ PackedSceneFrog = ExtResource("1_q7cwp")
 DeathPenalty = 200
 VitalityIncrease = 200
 FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
+frogs_processed = null
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -33,12 +34,20 @@ scale = Vector2(4.55294, 3.37879)
 texture = ExtResource("2_b7csg")
 
 [node name="Label" type="Label" parent="VictoryScreen"]
-offset_left = 322.0
-offset_top = 210.0
-offset_right = 901.0
-offset_bottom = 483.0
+offset_left = 6.0
+offset_top = 159.0
+offset_right = 594.0
+offset_bottom = 432.0
 theme_override_font_sizes/font_size = 200
-text = "Pause"
+text = "Score:"
+
+[node name="Button" type="Button" parent="VictoryScreen"]
+offset_left = 354.0
+offset_top = 467.0
+offset_right = 821.0
+offset_bottom = 571.0
+text = "restart
+"
 
 [node name="Gurke" parent="." instance=ExtResource("4_e2241")]
 position = Vector2(568, -162)
@@ -60,6 +69,7 @@ offset_bottom = 315.0
 [node name="EndTimer" type="Timer" parent="."]
 wait_time = 150.0
 one_shot = true
+autostart = true
 
 [node name="FrogPos" type="Marker2D" parent="."]
 position = Vector2(562, 437)
@@ -96,5 +106,6 @@ offset_bottom = 483.0
 theme_override_font_sizes/font_size = 200
 text = "Pause"
 
+[connection signal="pressed" from="VictoryScreen/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
 [connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]
