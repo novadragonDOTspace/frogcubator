@@ -5,6 +5,7 @@ extends Node2D
 @export var DeathPenalty: int
 @export var VitalityIncrease: int
 @export var FrogRessources: Array[FrogAssets]
+@export var sprüche: Array[AudioStream]
 enum GlobalStateEnum {main, game, pause, result}
 var state: GlobalStateEnum
 var prePauseState: GlobalStateEnum
@@ -22,10 +23,11 @@ func _process(_delta: float) -> void:
 	match state:
 		GlobalStateEnum.game:
 			print(str(FrogRessources.size()))
-			$Schlauch.position = Frog.Schlauchpunkt.position
 
 			if !Frog == null:
 				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog.VitalTimer.time_left)
+				$Schlauch.global_position = Frog.Schlauchpunkt.global_position
+
 			else:
 				label.text = "Score:" + str(score)
 
@@ -72,6 +74,7 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant) -> void:
 	else:
 		score += VitalityIncrease
 	if (cause == Frog.StateEnum.splode):
+		$Pop.play()
 		$Splosion.show()
 		$Splosion/Timer.start()
 	else:
@@ -80,12 +83,17 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant) -> void:
 	
 func _on_frog_base_scene_vital(allegiance: bool) -> void:
 	print("BSCV")
+	
+	$Pop2.stream = sprüche.pick_random()
+	$Pop2.play()
 	if allegiance:
 		score += VitalityIncrease
 	else:
 		score -= DeathPenalty
 	frogs_processed += 1
-	InstanceFrog()
+	$Schlauch.hide()
+	Frog.VitalTimer.stop()
+	
 
 func InstanceFrog():
 	Frog = PackedSceneFrog.instantiate()
@@ -109,3 +117,10 @@ func _on_button_pressed() -> void:
 	$VictoryScreen.hide()
 	InstanceFrog()
 	$EndTimer.start()
+
+
+func _on_pop_2_finished() -> void:
+	Frog.queue_free()
+	InstanceFrog()
+	$Schlauch.show()
+

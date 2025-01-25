@@ -10,7 +10,7 @@ var nomen: String
 @onready var Happy: Sprite2D = $Happy
 @onready var HappyTimer: Timer = $Happy/Timer
 
-enum StateEnum {goldilocks, splode, asphyxiation, vital, pause}
+enum StateEnum {goldilocks, splode, asphyxiation, vital, happy, pause}
 var state: StateEnum
 var PrePauseState: StateEnum
 
@@ -45,6 +45,7 @@ func initialize(pos, frogres: FrogAssets):
 	$LegRight.texture = frogres.LegRight
 	$Nase2.texture = frogres.Nose
 	$Accesoire1.texture = frogres.Accesoire1
+	$Happy.texture = frogres.Happy
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,7 +83,10 @@ func _process(_delta: float) -> void:
 		StateEnum.vital:
 			print("VitalTimer")
 			vital.emit(Allegiance)
-			queue_free()
+			state = StateEnum.happy
+			FrogIshappy()
+		StateEnum.happy:
+			pass
 
 		
 func _input(event: InputEvent) -> void:
@@ -106,3 +110,15 @@ func _on_body_entered(body: Node2D) -> void:
 	if (body.name == "Gurke"):
 		print("Splode Gurke")
 		state = StateEnum.splode
+
+func FrogIshappy():
+	$Body.hide()
+	$Eyes.hide()
+	$ArmLeft.hide()
+	$ArmLeft.hide()
+	$LegLeft.hide()
+	$LegRight.hide()
+	$Nase2.hide()
+	$Accesoire1.hide()
+	$Happy.show()
+	

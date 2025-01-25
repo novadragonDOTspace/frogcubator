@@ -53,6 +53,7 @@ position = Vector2(0, 18)
 
 [node name="Happy" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.075, 0.075)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LungenKollapsierer" to="." method="_on_lungen_kollapsierer_timeout"]
