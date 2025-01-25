@@ -1,11 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=6 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
-[ext_resource type="PackedScene" uid="uid://qrqu258t6ps6" path="res://frog_base_scene.tscn" id="1_q7cwp"]
+[ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog_base_scene.tscn" id="1_q7cwp"]
+[ext_resource type="Texture2D" uid="uid://bo58dxcm3f4nx" path="res://grey block of nothingness.png" id="2_b7csg"]
+[ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="4_e2241"]
+[ext_resource type="Texture2D" uid="uid://dggugbmotlo1t" path="res://Splosion.png" id="5_qpwgr"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cn5yq")
+PackedSceneFrog = ExtResource("1_q7cwp")
+DeathPenalty = 200
+VitalityIncrease = 200
 
-[node name="FrogBaseScene" parent="." instance=ExtResource("1_q7cwp")]
-position = Vector2(546, 262)
-scale = Vector2(5, 5)
+[node name="PauseScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseScreen"]
+modulate = Color(1, 1, 1, 0.854902)
+position = Vector2(578.5, 315.5)
+scale = Vector2(4.55294, 3.37879)
+texture = ExtResource("2_b7csg")
+
+[node name="Label" type="Label" parent="PauseScreen"]
+offset_left = 322.0
+offset_top = 210.0
+offset_right = 901.0
+offset_bottom = 483.0
+theme_override_font_sizes/font_size = 200
+text = "Pause"
+
+[node name="Gurke" parent="." instance=ExtResource("4_e2241")]
+position = Vector2(544, -120)
+scale = Vector2(0.1, 0.1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 46.0
+offset_top = 42.0
+offset_right = 689.0
+offset_bottom = 315.0
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 150.0
+one_shot = true
+
+[node name="FrogPos" type="Marker2D" parent="."]
+position = Vector2(554, 526)
+
+[node name="Splosion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(534.125, 318)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("5_qpwgr")
+
+[node name="Timer" type="Timer" parent="Splosion"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]

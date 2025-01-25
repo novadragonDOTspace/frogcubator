@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddy172d268tkv"]
+
+[ext_resource type="Script" path="res://Frog/frog_base_scene.gd" id="1_5p76s"]
+[ext_resource type="Texture2D" uid="uid://byqi7o1tvfs35" path="res://icon.svg" id="2_4ahq7"]
+[ext_resource type="Texture2D" uid="uid://b01rjh5pokcae" path="res://Frog/circle.png" id="2_ttkbw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njf7p"]
+
+[node name="FrogBaseScene" type="Node2D"]
+script = ExtResource("1_5p76s")
+Legs = Array[CompressedTexture2D]([ExtResource("2_4ahq7"), ExtResource("2_ttkbw")])
+
+[node name="FrogBody" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogBody"]
+shape = SubResource("CircleShape2D_njf7p")
+
+[node name="Circle" type="Sprite2D" parent="FrogBody"]
+position = Vector2(0.200001, -4.76837e-07)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_ttkbw")
+
+[node name="LegPointTopLeft" type="Marker2D" parent="FrogBody"]
+position = Vector2(-8, -5)
+
+[node name="LegPointTopRight" type="Marker2D" parent="FrogBody"]
+position = Vector2(9, -4)
+
+[node name="LegPointBottomLeft" type="Marker2D" parent="FrogBody"]
+position = Vector2(7, 6)
+
+[node name="LegPointBottomRight" type="Marker2D" parent="FrogBody"]
+position = Vector2(-7, 6)
+
+[node name="EyeLeft" type="Marker2D" parent="FrogBody"]
+position = Vector2(-3, -9)
+
+[node name="EyeRight" type="Marker2D" parent="FrogBody"]
+position = Vector2(3, -9)
+
+[node name="Schlauch" type="Marker2D" parent="FrogBody"]
+position = Vector2(0, -6)
+
+[node name="Nase" type="Marker2D" parent="FrogBody"]
+position = Vector2(0, -10)
+
+[node name="LungenKollapsierer" type="Timer" parent="."]
+wait_time = 0.173
+autostart = true
+
+[node name="EyeLeft" type="Sprite2D" parent="."]
+position = Vector2(-3, -9)
+scale = Vector2(0.003, 0.003)
+texture = ExtResource("2_ttkbw")
+
+[node name="EyeRight" type="Sprite2D" parent="."]
+position = Vector2(3, -9)
+scale = Vector2(0.003, 0.003)
+texture = ExtResource("2_ttkbw")
+
+[node name="VitalTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_entered" from="FrogBody" to="." method="_on_frog_body_area_entered"]
+[connection signal="body_entered" from="FrogBody" to="." method="_on_frog_body_body_entered"]
+[connection signal="timeout" from="LungenKollapsierer" to="." method="_on_lungen_kollapsierer_timeout"]
+[connection signal="timeout" from="VitalTimer" to="." method="_on_vital_timer_timeout"]

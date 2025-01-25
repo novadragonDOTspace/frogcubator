@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj4hx1qygf2e2"]
+
+[ext_resource type="Texture2D" uid="uid://dovkvnhwu6um3" path="res://Gurke/gurke.png" id="1_gmty0"]
+
+[node name="Gurke" type="Area2D"]
+
+[node name="Gurke" type="Sprite2D" parent="."]
+position = Vector2(404, 1958)
+texture = ExtResource("1_gmty0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(578, 2332, 704, 2310, 1031, 2386, 1184, 2431, 1278, 2467, 1377, 2642, 1543, 2768, 1566, 2871, 1525, 3028, 1440, 3185, 1144, 3298, 995, 3356, 874, 3284, 686, 3329, 609, 3405, 439, 3414, 259, 3522, 97, 3621, 3, 3693, -217, 3675, -464, 3580, -589, 3464, -567, 3293, -661, 3006, -500, 2925, -325, 2718, -316, 2602, -176, 2584, -78, 2503, 44, 2435, 461, 2305)
