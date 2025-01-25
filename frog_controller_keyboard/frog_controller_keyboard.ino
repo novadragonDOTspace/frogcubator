@@ -1,28 +1,53 @@
 #include <Keyboard.h>
 
 const int inPin = A1;
-bool keyState = false;
+bool keyState = true;
+int readingMax;
+int readingMin;
+unsigned long delayStart = 0;
 
 void setup() {
   Serial.begin(9600);
   Keyboard.begin();
+  keyState = true;
+  delayStart = millis(); 
 }
 
 void loop() {
-
+  if (digitalRead(2) == LOW) {
+    return;
+  }
+  
   int reading = collectSample();
-  //Serial.println(remap);
 
-  if (reading > 0) {
-    Keyboard.press('w');
-    keyState = true;
-    delay(200);
-  } else if (keyState) {
-    Keyboard.release('w');
-    keyState = false;
+  if (reading > readingMax) {
+    readingMax = reading;
+  }
+  if (reading < readingMin) {
+    readingMin = reading;
   }
 
-  delay(100);                      
+  Serial.print(readingMin);
+  Serial.print(",");
+  Serial.print(readingMax);
+  Serial.print(",");
+  Serial.println(reading);
+
+  if (reading > readingMax * 0.8 && !keyState) {
+    Keyboard.press('w');
+    keyState = true;
+    Serial.println("trigger on");
+  }
+  
+  if (keyState) {
+    if ((millis() - delayStart) >= 1000) {
+      Keyboard.release('w');
+      Serial.println("trigger off");
+      keyState = false;
+    }
+  }
+
+  delay(500);                      
 }
   
 int collectSample() {
