@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=34 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="1_q7cwp"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://djmijylbglnvo" path="res://SFX/Tofumais.wav" id="19_a4okc"]
 [ext_resource type="AudioStream" uid="uid://r0yiuepdffsn" path="res://SFX/Viva la Sä.wav" id="20_kau2f"]
 [ext_resource type="AudioStream" uid="uid://dvn0cxkwrmksy" path="res://SFX/Rinderkatze.wav" id="21_5wmej"]
+[ext_resource type="Texture2D" uid="uid://cb5ocxx0objf0" path="res://Frogobator_keyart_neu4.jpg" id="22_hct28"]
 [ext_resource type="Texture2D" uid="uid://dg7rp5tjq3pr8" path="res://team_Starbugs_bechergroe_Kopie.png" id="28_a6q0b"]
 [ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://radial_bar.tscn" id="29_xk8uj"]
 [ext_resource type="AudioStream" uid="uid://cyyt0d647uqkw" path="res://msc/BenFrosch_Music_Demo_loop.mp3" id="30_nvini"]
@@ -41,10 +42,30 @@ DeathPenalty = 200
 VitalityIncrease = 200
 FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1"), ExtResource("4_7yntd"), ExtResource("4_7yntd"), ExtResource("4_7yntd")])
 "sprüche" = Array[AudioStream]([ExtResource("11_d32gn"), ExtResource("12_t7iru"), ExtResource("13_my4mu"), ExtResource("14_cyfsm"), ExtResource("15_1j4so"), ExtResource("16_vvhvk"), ExtResource("17_ujik2"), ExtResource("18_gtqh4"), ExtResource("19_a4okc"), ExtResource("20_kau2f"), ExtResource("21_5wmej")])
-frogs_processed = null
+
+[node name="TitleScreen" type="CanvasLayer" parent="."]
+
+[node name="FrogobatorKeyartNeu4" type="Sprite2D" parent="TitleScreen"]
+position = Vector2(579, 324)
+scale = Vector2(0.586111, 0.586111)
+texture = ExtResource("22_hct28")
+
+[node name="Button3" type="Button" parent="TitleScreen"]
+offset_left = 53.0
+offset_top = 481.0
+offset_right = 520.0
+offset_bottom = 585.0
+text = "Blow to Start Game
+"
+
+[node name="RadialBar" parent="TitleScreen" instance=ExtResource("29_xk8uj")]
+offset_left = 670.0
+offset_top = 499.0
+offset_right = 670.0
+offset_bottom = 499.0
 
 [node name="20250126084835" type="Sprite2D" parent="."]
-position = Vector2(524, 459)
+position = Vector2(477, 451)
 scale = Vector2(0.369167, 0.369167)
 texture = ExtResource("31_m8ctd")
 
@@ -175,6 +196,10 @@ bus = &"Music"
 
 [node name="SerialStuffs" parent="." instance=ExtResource("32_ulfq4")]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="pressed" from="TitleScreen/Button3" to="." method="Game_Start"]
 [connection signal="pressed" from="VictoryScreen/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
@@ -182,3 +207,4 @@ bus = &"Music"
 [connection signal="finished" from="Pop2" to="." method="_on_pop_2_finished"]
 [connection signal="pressed" from="CreditsScreen/Button" to="." method="_on_close_button_pressed"]
 [connection signal="RPMReader" from="SerialStuffs" to="." method="_on_serial_stuffs_rpm_reader"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

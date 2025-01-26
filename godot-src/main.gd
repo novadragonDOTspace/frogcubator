@@ -12,13 +12,17 @@ var state: GlobalStateEnum
 var prePauseState: GlobalStateEnum
 @export var frogs_processed: int
 @onready var timerProgress: TextureProgressBar = 		$RadialBar/TextureProgressBar
+
+var start_barrier: float = 50;
+var starter = 0;
  
 
 var score: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	InstanceFrog()
-	state = GlobalStateEnum.game
+	state = GlobalStateEnum.main
+	
+	# InstanceFrog()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,6 +40,10 @@ func _process(_delta: float) -> void:
 			$VictoryScreen/Label.text = "Score:" + str(score)
 		GlobalStateEnum.result:
 			pass
+		GlobalStateEnum.main:
+			$TitleScreen/RadialBar/TextureProgressBar.value = starter / start_barrier * 100
+			if starter > start_barrier:
+				Game_Start()
 		_:
 			Frog.state = Frog.StateEnum.pause
 
@@ -154,7 +162,11 @@ func _on_pop_2_finished() -> void:
 
 
 func _on_serial_stuffs_rpm_reader(ink: float) -> void:
-	Frog.Pump_rpm(ink)
+	if state == GlobalStateEnum.game:
+		Frog.Pump_rpm(ink)
+	elif state == GlobalStateEnum.main:
+		if ink > 2500:
+			starter += ink/100
 
 
 func _on_button_2_pressed() -> void:
@@ -167,3 +179,13 @@ func _on_close_button_pressed() -> void:
 	state = GlobalStateEnum.result
 	$CreditsScreen.hide()
 	$VictoryScreen.show()
+
+
+func Game_Start() -> void:
+	state = GlobalStateEnum.game
+	$TitleScreen.hide()
+	InstanceFrog()
+
+
+func _on_timer_timeout() -> void:
+	starter -= 1
