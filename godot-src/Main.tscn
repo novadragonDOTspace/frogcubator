@@ -63,7 +63,7 @@ text = "restart
 "
 
 [node name="Gurke" parent="." instance=ExtResource("4_e2241")]
-position = Vector2(568, -162)
+position = Vector2(568, -182)
 scale = Vector2(0.1, 0.1)
 
 [node name="Schlauch" type="Sprite2D" parent="."]
