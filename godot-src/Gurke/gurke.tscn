@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj4hx1qygf2e2"]
+[gd_scene load_steps=3 format=3 uid="uid://cj4hx1qygf2e2"]
 
+[ext_resource type="Script" path="res://Gurke/gurke.gd" id="1_bdpdv"]
 [ext_resource type="Texture2D" uid="uid://dovkvnhwu6um3" path="res://Gurke/gurke.png" id="1_gmty0"]
 
 [node name="Gurke" type="Area2D"]
+script = ExtResource("1_bdpdv")
 
 [node name="Gurke" type="Sprite2D" parent="."]
 position = Vector2(404, 1958)

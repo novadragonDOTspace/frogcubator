@@ -49,6 +49,9 @@ func initialize(pos, frogres: FrogAssets):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	global_position = Vector2(global_position.x, get_viewport_rect().get_center().y)
+
 	CurrentLungenKapazität = randf_range(MinLungenKapazität, MaxLungenKapazität)
 	state = StateEnum.goldilocks
 
