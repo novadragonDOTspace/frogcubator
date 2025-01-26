@@ -2,6 +2,7 @@ extends Node2D
 @onready var Frog: Frog
 @onready var label: RichTextLabel = $RichTextLabel
 @export var PackedSceneFrog: PackedScene
+@export var adi: FrogAssets
 @export var DeathPenalty: int
 @export var VitalityIncrease: int
 @export var FrogRessources: Array[FrogAssets]
@@ -10,6 +11,8 @@ enum GlobalStateEnum {main, game, pause, result, credits}
 var state: GlobalStateEnum
 var prePauseState: GlobalStateEnum
 @export var frogs_processed: int
+@onready var timerProgress: TextureProgressBar = 		$RadialBar/TextureProgressBar
+ 
 
 var score: int
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +28,7 @@ func _process(_delta: float) -> void:
 			if !Frog == null:
 				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog.VitalTimer.time_left)
 				$Schlauch.global_position = Frog.Schlauchpunkt.global_position
+				timerProgress.value = Frog.VitalTimer.time_left / Frog.VitalTimer.wait_time * 100
 
 			else:
 				label.text = "Score:" + str(score)
@@ -54,7 +58,10 @@ func PauseSwitcher() -> void:
 		Frog.LungenKollapsierer.paused = false
 		Frog.VitalTimer.paused = false
 		$PauseScreen.visible = false
+		$EndTimer.paused = false
+
 	else:
+		$EndTimer.paused = true
 		prePauseState = state
 		state = GlobalStateEnum.pause
 		Frog.PrePauseState = Frog.state
@@ -65,8 +72,18 @@ func PauseSwitcher() -> void:
 		Frog.VitalTimer.paused = true
 
 
-func _on_frog_base_scene_death(allegiance: bool, cause: Variant) -> void:
+func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) -> void:
 	print("BSCD")
+
+
+	var frog: int = -1
+	for i in range(FrogRessources.size()-1):
+		if frog==-1:
+			if FrogRessources[i].Name == names:
+				frog = i
+	
+	FrogRessources.remove_at(frog)
+
 	frogs_processed += 1
 
 	if allegiance:
@@ -81,7 +98,7 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant) -> void:
 		InstanceFrog()
 
 	
-func _on_frog_base_scene_vital(allegiance: bool) -> void:
+func _on_frog_base_scene_vital(allegiance: bool, names: String) -> void:
 	print("BSCV")
 	
 	$Pop2.stream = sprüche.pick_random()
@@ -90,10 +107,21 @@ func _on_frog_base_scene_vital(allegiance: bool) -> void:
 		score += VitalityIncrease
 	else:
 		score -= DeathPenalty
+
+	var frog: FrogAssets = null
+	for i in range(FrogRessources.size()-1):
+		if frog==null:
+			if FrogRessources[i].Name == names:
+				frog = FrogRessources[i]
+	
+	FrogRessources.append(frog)
+
 	frogs_processed += 1
 	$Schlauch.hide()
 	Frog.VitalTimer.stop()
 	
+
+
 
 func InstanceFrog():
 	Frog = PackedSceneFrog.instantiate()

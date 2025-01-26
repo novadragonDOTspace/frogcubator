@@ -17,7 +17,6 @@ autostart = true
 
 [node name="VitalTimer" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_njf7p")

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/frachiganz_Augen.png-d6f0afae12550a7363c16ae1
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

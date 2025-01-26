@@ -29,21 +29,21 @@ public partial class SerialStuffs : Node
 		port.Open();
 	}
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
 		try
 		{
-			
+
 			var RPM = port.ReadLine();
 			GD.Print($"RPM: {RPM}");
 			currentRPM = Convert.ToInt32(RPM);
 			EmitSignal(SignalName.RPMReader, currentRPM);
 		}
 		catch (TimeoutException) { }
-    }
+	}
 
-    public override void _ExitTree()
+	public override void _ExitTree()
 	{
 		port.Close();
 		base._ExitTree();

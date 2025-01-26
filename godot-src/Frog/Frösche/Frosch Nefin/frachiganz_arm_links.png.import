@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/frachiganz_arm_links.png-3650a4abdf83444acdf8
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -14,8 +14,8 @@ enum StateEnum {goldilocks, splode, asphyxiation, vital, happy, pause}
 var state: StateEnum
 var PrePauseState: StateEnum
 
-signal death(allegiance: bool, state: StateEnum)
-signal vital(allegiance: bool)
+signal death(allegiance: bool, state: StateEnum, name: String)
+signal vital(allegiance: bool, name: String)
 
 var FrogScalar: float
 var MaxLungenKapazität: float = 500
@@ -53,6 +53,7 @@ func _ready() -> void:
 	global_position = Vector2(get_viewport_rect().get_center().x, global_position.y)
 
 	CurrentLungenKapazität = randf_range(MinLungenKapazität, MaxLungenKapazität)
+	VitalTimer.start(randi_range(5,10))
 	state = StateEnum.goldilocks
 
 
@@ -67,25 +68,22 @@ func _process(_delta: float) -> void:
 				state = StateEnum.splode
 			if CurrentLungenKapazität < MinLungenKapazität:
 				state = StateEnum.asphyxiation
-			FrogScalar = CurrentLungenKapazität / (MinLungenKapazität + MaxLungenKapazität / 2) * 3
+			FrogScalar = CurrentLungenKapazität / (MinLungenKapazität + MaxLungenKapazität / 2) * 2.5
 			scale = Vector2(FrogScalar, FrogScalar)
 			InputFloat = 0
 		StateEnum.splode:
 			print("StateSplode")
-			death.emit(Allegiance, state)
+			death.emit(Allegiance, state, nomen)
 			queue_free()
 			# state = StateEnum.goldilocks
 		StateEnum.asphyxiation:
-			print("StateAsphyx")
-			death.emit(Allegiance, state)
+			death.emit(Allegiance, state, nomen)
 			queue_free()
 			# state = StateEnum.goldilocks
 		StateEnum.pause:
-			print("StatePause")
 			pass
 		StateEnum.vital:
-			print("VitalTimer")
-			vital.emit(Allegiance)
+			vital.emit(Allegiance, nomen)
 			state = StateEnum.happy
 			FrogIshappy()
 		StateEnum.happy:
@@ -130,5 +128,5 @@ func FrogIshappy():
 	
 
 func _on_serial_stuffs_rpm_reader(ink: float) -> void:
-	if ink > 1800:
-		InputFloat = (ink - 1800) / 100
+	if ink > 3000:
+		InputFloat = (ink - 3000) / 100

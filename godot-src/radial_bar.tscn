@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cysyw7so3y2ss"]
+
+[ext_resource type="Texture2D" uid="uid://d4qduaqngdsm" path="res://progress-bar-circle.png" id="1_anorn"]
+
+[node name="RadialBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 33.0
+fill_mode = 5
+texture_progress = ExtResource("1_anorn")

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/frachiganz_spatz.png-6ff0f18a4d2bc9c94799a02f
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

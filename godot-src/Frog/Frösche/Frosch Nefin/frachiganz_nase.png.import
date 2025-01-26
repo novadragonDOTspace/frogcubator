@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/frachiganz_nase.png-78c7f71e34fede1db78bb5432
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

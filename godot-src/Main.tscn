@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=32 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="1_q7cwp"]
@@ -28,15 +28,24 @@
 [ext_resource type="AudioStream" uid="uid://r0yiuepdffsn" path="res://SFX/Viva la Sä.wav" id="20_kau2f"]
 [ext_resource type="AudioStream" uid="uid://dvn0cxkwrmksy" path="res://SFX/Rinderkatze.wav" id="21_5wmej"]
 [ext_resource type="Texture2D" uid="uid://dg7rp5tjq3pr8" path="res://team_Starbugs_bechergroe_Kopie.png" id="28_a6q0b"]
+[ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://radial_bar.tscn" id="29_xk8uj"]
+[ext_resource type="AudioStream" uid="uid://cyyt0d647uqkw" path="res://msc/BenFrosch_Music_Demo_loop.mp3" id="30_nvini"]
+[ext_resource type="Texture2D" uid="uid://bgsq3heshlrex" path="res://20250126_084835.jpg" id="31_m8ctd"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cn5yq")
 PackedSceneFrog = ExtResource("1_q7cwp")
+adi = ExtResource("4_7yntd")
 DeathPenalty = 200
 VitalityIncrease = 200
-FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
+FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1"), ExtResource("4_7yntd"), ExtResource("4_7yntd"), ExtResource("4_7yntd")])
 "sprüche" = Array[AudioStream]([ExtResource("11_d32gn"), ExtResource("12_t7iru"), ExtResource("13_my4mu"), ExtResource("14_cyfsm"), ExtResource("15_1j4so"), ExtResource("16_vvhvk"), ExtResource("17_ujik2"), ExtResource("18_gtqh4"), ExtResource("19_a4okc"), ExtResource("20_kau2f"), ExtResource("21_5wmej")])
 frogs_processed = null
+
+[node name="20250126084835" type="Sprite2D" parent="."]
+position = Vector2(524, 459)
+scale = Vector2(0.369167, 0.369167)
+texture = ExtResource("31_m8ctd")
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -91,7 +100,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="EndTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 150.0
 one_shot = true
 autostart = true
 
@@ -151,6 +160,17 @@ offset_top = 16.0
 offset_right = 1111.0
 offset_bottom = 47.0
 text = "Close Credits"
+
+[node name="RadialBar" parent="." instance=ExtResource("29_xk8uj")]
+offset_left = 63.0
+offset_top = 38.0
+offset_right = 63.0
+offset_bottom = 38.0
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_nvini")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="VictoryScreen/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/Button2" to="." method="_on_button_2_pressed"]
