@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddy172d268tkv"]
+[gd_scene load_steps=5 format=3 uid="uid://ddy172d268tkv"]
 
 [ext_resource type="Script" path="res://Frog/frog.gd" id="1_5p76s"]
 [ext_resource type="Texture2D" uid="uid://d4fq8fetoj6mr" path="res://Frog/Frösche/Fosch normen 2/frachiganz_koerper.png" id="2_r8mdj"]
 [ext_resource type="Texture2D" uid="uid://b6e1olmqmotg5" path="res://Frog/Frösche/Fosch normen 2/frachiganz_nase.png" id="3_jr0bx"]
-[ext_resource type="PackedScene" uid="uid://ccr1qsix27x1h" path="res://serial_stuffs.tscn" id="4_kfq1a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njf7p"]
 radius = 48.28
@@ -55,9 +54,6 @@ position = Vector2(0, 18)
 visible = false
 scale = Vector2(0.075, 0.075)
 
-[node name="SerialStuffs" parent="." instance=ExtResource("4_kfq1a")]
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LungenKollapsierer" to="." method="_on_lungen_kollapsierer_timeout"]
 [connection signal="timeout" from="VitalTimer" to="." method="_on_vital_timer_timeout"]
-[connection signal="RPMReader" from="SerialStuffs" to="." method="_on_serial_stuffs_rpm_reader"]

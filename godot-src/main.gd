@@ -85,7 +85,7 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) 
 	FrogRessources.remove_at(frog)
 
 	frogs_processed += 1
-
+	
 	if allegiance:
 		score -= DeathPenalty
 	else:
@@ -119,7 +119,7 @@ func _on_frog_base_scene_vital(allegiance: bool, names: String) -> void:
 	frogs_processed += 1
 	$Schlauch.hide()
 	Frog.VitalTimer.stop()
-	
+
 
 
 
@@ -154,7 +154,7 @@ func _on_pop_2_finished() -> void:
 
 
 func _on_serial_stuffs_rpm_reader(ink: float) -> void:
-	Frog.Pump_rpm(ink - 2000)
+	Frog.Pump_rpm(ink)
 
 
 func _on_button_2_pressed() -> void:

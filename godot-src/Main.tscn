@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=33 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="1_q7cwp"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://radial_bar.tscn" id="29_xk8uj"]
 [ext_resource type="AudioStream" uid="uid://cyyt0d647uqkw" path="res://msc/BenFrosch_Music_Demo_loop.mp3" id="30_nvini"]
 [ext_resource type="Texture2D" uid="uid://bgsq3heshlrex" path="res://20250126_084835.jpg" id="31_m8ctd"]
+[ext_resource type="PackedScene" uid="uid://ccr1qsix27x1h" path="res://serial_stuffs.tscn" id="32_ulfq4"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cn5yq")
@@ -172,9 +173,12 @@ stream = ExtResource("30_nvini")
 autoplay = true
 bus = &"Music"
 
+[node name="SerialStuffs" parent="." instance=ExtResource("32_ulfq4")]
+
 [connection signal="pressed" from="VictoryScreen/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
 [connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]
 [connection signal="finished" from="Pop2" to="." method="_on_pop_2_finished"]
 [connection signal="pressed" from="CreditsScreen/Button" to="." method="_on_close_button_pressed"]
+[connection signal="RPMReader" from="SerialStuffs" to="." method="_on_serial_stuffs_rpm_reader"]

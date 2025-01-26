@@ -97,9 +97,10 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("blow"):
 			InputFloat = Input.get_action_raw_strength("blow")
 
-func Pump_rpm(rpm_size: float):
-	if (rpm_size > 0):
-		InputFloat = rpm_size / 500
+func Pump_rpm(ink: float):
+	print("SIGNAL RECEIVED" + str(ink))
+	if ink > 3000:
+		InputFloat = (ink - 3000) / 100
 
 func _on_lungen_kollapsierer_timeout() -> void:
 	if state == StateEnum.goldilocks:
