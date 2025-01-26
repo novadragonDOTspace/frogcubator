@@ -96,6 +96,9 @@ func _input(event: InputEvent) -> void:
 		if event.is_action("blow"):
 			InputFloat = Input.get_action_raw_strength("blow")
 
+func Pump_rpm(rpm_size: float):
+	if (rpm_size > 0):
+		InputFloat = rpm_size / 500
 
 func _on_lungen_kollapsierer_timeout() -> void:
 	if state == StateEnum.goldilocks:
@@ -122,3 +125,7 @@ func FrogIshappy():
 	$Accesoire1.hide()
 	$Happy.show()
 	
+
+func _on_serial_stuffs_rpm_reader(ink: float) -> void:
+	if ink > 1800:
+		InputFloat = (ink - 1800) / 100

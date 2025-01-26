@@ -7,7 +7,6 @@ int InterruptCounter, rpm;
 void setup(){
   delay(1000);
   Serial.begin(9600);
-  Serial.print("Counting");
 }
 
 void loop() {
@@ -28,8 +27,5 @@ void countup() {
 }
 
 void display_rpm() {
-  Serial.print("Counts: ");
-  Serial.print(InterruptCounter, 1);
-  Serial.print(" RPM: ");
   Serial.println(rpm);
 }

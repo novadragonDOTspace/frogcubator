@@ -22,8 +22,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	match state:
 		GlobalStateEnum.game:
-			print(str(FrogRessources.size()))
-
 			if !Frog == null:
 				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog.VitalTimer.time_left)
 				$Schlauch.global_position = Frog.Schlauchpunkt.global_position
@@ -124,3 +122,7 @@ func _on_pop_2_finished() -> void:
 	InstanceFrog()
 	$Schlauch.show()
 
+
+
+func _on_serial_stuffs_rpm_reader(ink:float) -> void:
+	Frog.Pump_rpm(ink - 2000)

@@ -35,6 +35,7 @@ DeathPenalty = 200
 VitalityIncrease = 200
 FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
 "sprüche" = Array[AudioStream]([ExtResource("11_d32gn"), ExtResource("12_t7iru"), ExtResource("13_my4mu"), ExtResource("14_cyfsm"), ExtResource("15_1j4so"), ExtResource("16_vvhvk"), ExtResource("17_ujik2"), ExtResource("18_gtqh4"), ExtResource("19_a4okc"), ExtResource("20_kau2f"), ExtResource("21_5wmej")])
+frogs_processed = null
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 visible = false

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccr1qsix27x1h"]
+
+[ext_resource type="Script" path="res://SerialStuffs.cs" id="1_eqtjn"]
+
+[node name="SerialStuffs" type="Node"]
+script = ExtResource("1_eqtjn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
