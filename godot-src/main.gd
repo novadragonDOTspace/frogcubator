@@ -6,7 +6,7 @@ extends Node2D
 @export var VitalityIncrease: int
 @export var FrogRessources: Array[FrogAssets]
 @export var sprüche: Array[AudioStream]
-enum GlobalStateEnum {main, game, pause, result}
+enum GlobalStateEnum {main, game, pause, result, credits}
 var state: GlobalStateEnum
 var prePauseState: GlobalStateEnum
 @export var frogs_processed: int
@@ -32,11 +32,13 @@ func _process(_delta: float) -> void:
 			$VictoryScreen/Label.text = "Score:" + str(score)
 		GlobalStateEnum.result:
 			pass
+		_:
+			Frog.state = Frog.StateEnum.pause
 
 
 func _on_end_timer_timeout() -> void:
 		state = GlobalStateEnum.result
-		Frog.state = Frog.StateEnum.pause
+		Frog.queue_free()
 		$VictoryScreen.show()
 
 
@@ -123,6 +125,17 @@ func _on_pop_2_finished() -> void:
 	$Schlauch.show()
 
 
-
-func _on_serial_stuffs_rpm_reader(ink:float) -> void:
+func _on_serial_stuffs_rpm_reader(ink: float) -> void:
 	Frog.Pump_rpm(ink - 2000)
+
+
+func _on_button_2_pressed() -> void:
+	state = GlobalStateEnum.credits
+	$CreditsScreen.show()
+	$VictoryScreen.hide()
+
+
+func _on_close_button_pressed() -> void:
+	state = GlobalStateEnum.result
+	$CreditsScreen.hide()
+	$VictoryScreen.show()

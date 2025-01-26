@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FrogAssets" load_steps=2 format=3 uid="uid://cheres6a22kd"]
+
+[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_wtxpl"]
+
+[resource]
+script = ExtResource("1_wtxpl")
+Name = ""
+Allegiance = false
