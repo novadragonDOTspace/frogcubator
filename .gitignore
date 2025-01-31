@@ -13,3 +13,5 @@ godot-src/*.translation
 godot-src/.mono/
 godot-src/data_*/
 godot-src/mono_crash.*.json
+
+.DS_Store
