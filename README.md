@@ -18,11 +18,4 @@ Using gamepad use  **right trigger** to pump.
 
 ## Build the controller
 
-If you want to build the controller you need:
-
-- a fan with 3 pins
-- an Arduino Leonardo (Uno or similar should work, too)
-- a ~300 Ohm resistor (can also be more, we need to throttle the fan a bit)
-- cables
-
-Look into [frog_controller_rpm](https://github.com/GreatNovaDragon/frogcubator/tree/main/frog_controller_rpm) for more details.
+If you want to build the controller look into [frog_controller_rpm](https://github.com/GreatNovaDragon/frogcubator/tree/main/frog_controller_rpm) for more details.
