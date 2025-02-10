@@ -13,7 +13,7 @@
 [resource]
 script = ExtResource("1_wtxpl")
 Name = "Nefin"
-Allegiance = false
+Allegiance = true
 Body = ExtResource("4_ktmpp")
 LegLeft = ExtResource("6_ioai7")
 LegRight = ExtResource("7_k6qfy")

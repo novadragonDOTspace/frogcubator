@@ -12,8 +12,8 @@
 
 [resource]
 script = ExtResource("1_7orc0")
-Name = ""
-Allegiance = false
+Name = "Nina"
+Allegiance = true
 Body = ExtResource("4_ks08n")
 LegLeft = ExtResource("6_kwtq5")
 LegRight = ExtResource("7_t3vfr")

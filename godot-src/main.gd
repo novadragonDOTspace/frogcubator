@@ -21,6 +21,7 @@ var score: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state = GlobalStateEnum.main
+	$music.play()
 	
 	# InstanceFrog()
 
@@ -165,7 +166,7 @@ func _on_serial_stuffs_rpm_reader(ink: float) -> void:
 	if state == GlobalStateEnum.game:
 		Frog.Pump_rpm(ink)
 	elif state == GlobalStateEnum.main:
-		if ink > 2500:
+		if ink > 2250:
 			starter += ink/100
 
 

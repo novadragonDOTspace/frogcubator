@@ -198,6 +198,7 @@ bus = &"Music"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
+autostart = true
 
 [connection signal="pressed" from="TitleScreen/Button3" to="." method="Game_Start"]
 [connection signal="pressed" from="VictoryScreen/Button" to="." method="_on_button_pressed"]
