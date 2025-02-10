@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=35 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="1_q7cwp"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://r72ttc66doif" path="res://Frog/Frösche/Naiko.tres" id="8_6ofd6"]
 [ext_resource type="AudioStream" uid="uid://bp1713wvpkhv1" path="res://SFX/Danke.wav" id="11_d32gn"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="11_hik51"]
+[ext_resource type="Resource" uid="uid://cheres6a22kd" path="res://Frog/Frösche/Nefin.tres" id="11_xxbrj"]
 [ext_resource type="AudioStream" uid="uid://cetnx6o6i660j" path="res://SFX/schweinehund.wav" id="12_t7iru"]
 [ext_resource type="AudioStream" uid="uid://b0udhyq56k8v7" path="res://SFX/Sterbsterb.wav" id="13_my4mu"]
 [ext_resource type="AudioStream" uid="uid://cg4pfjc3xp473" path="res://SFX/Audi.wav" id="14_cyfsm"]
@@ -41,79 +42,23 @@ adi = ExtResource("4_7yntd")
 DeathPenalty = 200
 VitalityIncrease = 200
 FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1"), ExtResource("4_7yntd"), ExtResource("4_7yntd"), ExtResource("4_7yntd")])
+AllFrogs = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("11_xxbrj"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
 "sprüche" = Array[AudioStream]([ExtResource("11_d32gn"), ExtResource("12_t7iru"), ExtResource("13_my4mu"), ExtResource("14_cyfsm"), ExtResource("15_1j4so"), ExtResource("16_vvhvk"), ExtResource("17_ujik2"), ExtResource("18_gtqh4"), ExtResource("19_a4okc"), ExtResource("20_kau2f"), ExtResource("21_5wmej")])
 
-[node name="TitleScreen" type="CanvasLayer" parent="."]
+[node name="Game" type="CanvasLayer" parent="."]
 
-[node name="FrogobatorKeyartNeu4" type="Sprite2D" parent="TitleScreen"]
-position = Vector2(579, 324)
-scale = Vector2(0.586111, 0.586111)
-texture = ExtResource("22_hct28")
-
-[node name="Button3" type="Button" parent="TitleScreen"]
-offset_left = 53.0
-offset_top = 481.0
-offset_right = 520.0
-offset_bottom = 585.0
-text = "Blow to Start Game
-"
-
-[node name="RadialBar" parent="TitleScreen" instance=ExtResource("29_xk8uj")]
-offset_left = 670.0
-offset_top = 499.0
-offset_right = 670.0
-offset_bottom = 499.0
-
-[node name="20250126084835" type="Sprite2D" parent="."]
-position = Vector2(477, 451)
-scale = Vector2(0.369167, 0.369167)
-texture = ExtResource("31_m8ctd")
-
-[node name="VictoryScreen" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="VictoryScreen"]
-modulate = Color(1, 1, 1, 0.854902)
-position = Vector2(578.5, 315.5)
-scale = Vector2(4.55294, 3.37879)
-texture = ExtResource("2_b7csg")
-
-[node name="Label" type="Label" parent="VictoryScreen"]
-offset_left = 6.0
-offset_top = 159.0
-offset_right = 594.0
-offset_bottom = 432.0
-theme_override_font_sizes/font_size = 200
-text = "Score:"
-
-[node name="Button" type="Button" parent="VictoryScreen"]
-offset_left = 53.0
-offset_top = 481.0
-offset_right = 520.0
-offset_bottom = 585.0
-text = "restart
-"
-
-[node name="Button2" type="Button" parent="VictoryScreen"]
-offset_left = 569.0
-offset_top = 482.0
-offset_right = 1036.0
-offset_bottom = 586.0
-text = "show credits
-"
-
-[node name="Gurke" parent="." instance=ExtResource("4_e2241")]
+[node name="Gurke" parent="Game" instance=ExtResource("4_e2241")]
 position = Vector2(568, -182)
 scale = Vector2(0.1, 0.1)
 
-[node name="Schlauch" type="Sprite2D" parent="."]
+[node name="Schlauch" type="Sprite2D" parent="Game"]
 z_index = 1
 position = Vector2(-115, 112)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.27, 0.27)
 texture = ExtResource("15_ifhhe")
 offset = Vector2(1240, 53)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Game"]
 offset_left = 46.0
 offset_top = 42.0
 offset_right = 689.0
@@ -121,36 +66,109 @@ offset_bottom = 315.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="EndTimer" type="Timer" parent="."]
+[node name="EndTimer" type="Timer" parent="Game"]
 wait_time = 150.0
 one_shot = true
 autostart = true
 
-[node name="FrogPos" type="Marker2D" parent="."]
+[node name="FrogPos" type="Marker2D" parent="Game"]
 position = Vector2(562, 437)
 
-[node name="Splosion" type="Sprite2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Game"]
+position = Vector2(578, 323)
+script = ExtResource("11_hik51")
+
+[node name="Pop" type="AudioStreamPlayer2D" parent="Game"]
+stream = ExtResource("16_qmes8")
+bus = &"SFX"
+
+[node name="Pop2" type="AudioStreamPlayer2D" parent="Game"]
+bus = &"SFX"
+
+[node name="RadialBar" parent="Game" instance=ExtResource("29_xk8uj")]
+offset_left = 75.0
+offset_top = 84.0
+offset_right = -91.4
+offset_bottom = -70.8
+
+[node name="SerialStuffs" parent="Game" instance=ExtResource("32_ulfq4")]
+
+[node name="Timer" type="Timer" parent="Game"]
+wait_time = 0.1
+autostart = true
+
+[node name="Splosion" type="Sprite2D" parent="Game"]
 visible = false
 z_index = 2
 position = Vector2(534.125, 318)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("5_qpwgr")
 
-[node name="Timer" type="Timer" parent="Splosion"]
+[node name="Timer" type="Timer" parent="Game/Splosion"]
 wait_time = 0.5
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(578, 323)
-script = ExtResource("11_hik51")
+[node name="TitleScreen" type="CanvasLayer" parent="."]
+
+[node name="FrogobatorKeyartNeu4" type="Sprite2D" parent="TitleScreen"]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("22_hct28")
+centered = false
+
+[node name="Button3" type="Button" parent="TitleScreen"]
+offset_left = 106.0
+offset_top = 547.0
+offset_right = 573.0
+offset_bottom = 651.0
+text = "Pump or Press this Button to Start the Game Game
+"
+
+[node name="RadialBar" parent="TitleScreen" instance=ExtResource("29_xk8uj")]
+offset_left = 632.0
+offset_top = 555.0
+offset_right = 632.0
+offset_bottom = 555.0
+
+[node name="VictoryScreen" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="VictoryScreen"]
+modulate = Color(1, 1, 1, 0.854902)
+position = Vector2(668.5, 352.5)
+scale = Vector2(5.25882, 3.75253)
+texture = ExtResource("2_b7csg")
+
+[node name="Label" type="Label" parent="VictoryScreen"]
+offset_left = 100.0
+offset_top = 150.0
+offset_right = 688.0
+offset_bottom = 423.0
+theme_override_font_sizes/font_size = 200
+text = "Score:"
+
+[node name="Button" type="Button" parent="VictoryScreen"]
+offset_left = 100.0
+offset_top = 500.0
+offset_right = 600.0
+offset_bottom = 600.0
+text = "restart
+"
+
+[node name="Button2" type="Button" parent="VictoryScreen"]
+offset_left = 700.0
+offset_top = 500.0
+offset_right = 1200.0
+offset_bottom = 600.0
+text = "show credits
+"
 
 [node name="PauseScreen" type="CanvasLayer" parent="."]
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="PauseScreen"]
 modulate = Color(1, 1, 1, 0.854902)
-position = Vector2(578.5, 315.5)
-scale = Vector2(4.55294, 3.37879)
+position = Vector2(660, 362)
+scale = Vector2(5.19216, 3.84849)
 texture = ExtResource("2_b7csg")
 
 [node name="Label" type="Label" parent="PauseScreen"]
@@ -161,51 +179,38 @@ offset_bottom = 483.0
 theme_override_font_sizes/font_size = 200
 text = "Pause"
 
-[node name="Pop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("16_qmes8")
-bus = &"SFX"
-
-[node name="Pop2" type="AudioStreamPlayer2D" parent="."]
-bus = &"SFX"
-
 [node name="CreditsScreen" type="CanvasLayer" parent="."]
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="CreditsScreen"]
-position = Vector2(569, 272)
-scale = Vector2(0.5, 0.5)
+position = Vector2(639.833, 242.75)
+scale = Vector2(0.641167, 0.643)
 texture = ExtResource("28_a6q0b")
 
 [node name="Button" type="Button" parent="CreditsScreen"]
-offset_left = 1002.0
-offset_top = 16.0
-offset_right = 1111.0
-offset_bottom = 47.0
+offset_left = 1143.0
+offset_top = 19.0
+offset_right = 1252.0
+offset_bottom = 50.0
 text = "Close Credits"
 
-[node name="RadialBar" parent="." instance=ExtResource("29_xk8uj")]
-offset_left = 63.0
-offset_top = 38.0
-offset_right = 63.0
-offset_bottom = 38.0
-
 [node name="music" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("30_nvini")
 autoplay = true
 bus = &"Music"
 
-[node name="SerialStuffs" parent="." instance=ExtResource("32_ulfq4")]
+[node name="20250126084835" type="Sprite2D" parent="."]
+position = Vector2(579, 444)
+scale = Vector2(0.320958, 0.320958)
+texture = ExtResource("31_m8ctd")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
-autostart = true
-
+[connection signal="timeout" from="Game/EndTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="finished" from="Game/Pop2" to="." method="_on_pop_2_finished"]
+[connection signal="RPMReader" from="Game/SerialStuffs" to="." method="_on_serial_stuffs_rpm_reader"]
+[connection signal="timeout" from="Game/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Game/Splosion/Timer" to="." method="_on_splosion_timer_timeout"]
 [connection signal="pressed" from="TitleScreen/Button3" to="." method="Game_Start"]
 [connection signal="pressed" from="VictoryScreen/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VictoryScreen/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
-[connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]
-[connection signal="finished" from="Pop2" to="." method="_on_pop_2_finished"]
 [connection signal="pressed" from="CreditsScreen/Button" to="." method="_on_close_button_pressed"]
-[connection signal="RPMReader" from="SerialStuffs" to="." method="_on_serial_stuffs_rpm_reader"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

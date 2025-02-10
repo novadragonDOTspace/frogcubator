@@ -3,13 +3,12 @@ using System;
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Threading;
-
-
+using Environment = Godot.Environment;
 
 
 public partial class SerialStuffs : Node
 {
-
+	private ConfigFile config = new ConfigFile();
 	[Signal]
 	public delegate void RPMReaderEventHandler(double ink);
 	SerialPort port = new SerialPort("/dev/ttyACM0");
@@ -18,6 +17,19 @@ public partial class SerialStuffs : Node
 	int currentRPM;
 	public override void _Ready()
 	{
+		Error err = config.Load("user://pumpconfig.cfg");
+
+		if (err != Error.Ok)
+		{
+			config.SetValue("Serial", "port", OS.GetName() == "Windows" ? "COM1" : "/dev/ttyACM0");
+			config.Save("user://pumpconfig.cfg");
+		}
+	
+		
+		
+		
+		
+		port = new SerialPort((String)config.GetValue("Serial","port"));
 		port.BaudRate = 9600;
 		port.Parity = Parity.None;
 		port.StopBits = StopBits.One;

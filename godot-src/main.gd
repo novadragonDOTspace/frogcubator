@@ -1,17 +1,19 @@
 extends Node2D
-@onready var Frog: Frog
-@onready var label: RichTextLabel = $RichTextLabel
+@onready var Frog_Asset: Frog
+@onready var label: RichTextLabel = $Game/RichTextLabel
 @export var PackedSceneFrog: PackedScene
 @export var adi: FrogAssets
 @export var DeathPenalty: int
 @export var VitalityIncrease: int
 @export var FrogRessources: Array[FrogAssets]
+@export var AllFrogs: Array[FrogAssets]
+
 @export var sprüche: Array[AudioStream]
 enum GlobalStateEnum {main, game, pause, result, credits}
 var state: GlobalStateEnum
 var prePauseState: GlobalStateEnum
 @export var frogs_processed: int
-@onready var timerProgress: TextureProgressBar = 		$RadialBar/TextureProgressBar
+@onready var timerProgress: TextureProgressBar = 		$Game/RadialBar/TextureProgressBar
 
 var start_barrier: float = 50;
 var starter = 0;
@@ -30,10 +32,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	match state:
 		GlobalStateEnum.game:
-			if !Frog == null:
-				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog.VitalTimer.time_left)
-				$Schlauch.global_position = Frog.Schlauchpunkt.global_position
-				timerProgress.value = Frog.VitalTimer.time_left / Frog.VitalTimer.wait_time * 100
+			if !Frog_Asset == null:
+				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog_Asset.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog_Asset.VitalTimer.time_left)
+				$Game/Schlauch.global_position = Frog_Asset.Schlauchpunkt.global_position
+				timerProgress.value = Frog_Asset.VitalTimer.time_left / Frog_Asset.VitalTimer.wait_time * 100
 
 			else:
 				label.text = "Score:" + str(score)
@@ -46,39 +48,52 @@ func _process(_delta: float) -> void:
 			if starter > start_barrier:
 				Game_Start()
 		_:
-			Frog.state = Frog.StateEnum.pause
+			if !Frog_Asset == null:
+				Frog_Asset.state = Frog_Asset.StateEnum.pause
 
 
 func _on_end_timer_timeout() -> void:
 		state = GlobalStateEnum.result
-		Frog.queue_free()
+		if Frog_Asset != null:
+			Frog_Asset.state = Frog_Asset.StateEnum.pause
+			Frog_Asset.LungenKollapsierer.paused = true
+			Frog_Asset.VitalTimer.paused = true
+		$Game.hide()
+		
 		$VictoryScreen.show()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_button"):
 		PauseSwitcher()
+	if event.is_action_pressed("fullscreen"):
+		FullScreenSwitcher()
 		
+func FullScreenSwitcher() -> void:
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		
 func PauseSwitcher() -> void:
 	if state == GlobalStateEnum.pause:
 		state = prePauseState
-		Frog.state = Frog.PrePauseState
-		Frog.LungenKollapsierer.paused = false
-		Frog.VitalTimer.paused = false
+		Frog_Asset.state = Frog_Asset.PrePauseState
+		Frog_Asset.LungenKollapsierer.paused = false
+		Frog_Asset.VitalTimer.paused = false
 		$PauseScreen.visible = false
-		$EndTimer.paused = false
+		$Game/EndTimer.paused = false
 
 	else:
-		$EndTimer.paused = true
+		$Game/EndTimer.paused = true
 		prePauseState = state
 		state = GlobalStateEnum.pause
-		Frog.PrePauseState = Frog.state
-		Frog.state = Frog.StateEnum.pause
-		Frog.LungenKollapsierer.paused = true
-		Frog.LungenKollapsPerSekunde += frogs_processed
+		Frog_Asset.PrePauseState = Frog_Asset.state
+		Frog_Asset.state = Frog_Asset.StateEnum.pause
+		Frog_Asset.LungenKollapsierer.paused = true
+		Frog_Asset.LungenKollapsPerSekunde += frogs_processed
 		$PauseScreen.visible = true
-		Frog.VitalTimer.paused = true
+		Frog_Asset.VitalTimer.paused = true
 
 
 func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) -> void:
@@ -92,6 +107,7 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) 
 				frog = i
 	
 	FrogRessources.remove_at(frog)
+	FrogRessources.append(AllFrogs.pick_random())
 
 	frogs_processed += 1
 	
@@ -100,9 +116,9 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) 
 	else:
 		score += VitalityIncrease
 	if (cause == Frog.StateEnum.splode):
-		$Pop.play()
-		$Splosion.show()
-		$Splosion/Timer.start()
+		$Game/Pop.play()
+		$Game/Splosion.show()
+		$Game/Splosion/Timer.start()
 	else:
 		InstanceFrog()
 
@@ -110,8 +126,8 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) 
 func _on_frog_base_scene_vital(allegiance: bool, names: String) -> void:
 	print("BSCV")
 	
-	$Pop2.stream = sprüche.pick_random()
-	$Pop2.play()
+	$Game/Pop2.stream = sprüche.pick_random()
+	$Game/Pop2.play()
 	if allegiance:
 		score += VitalityIncrease
 	else:
@@ -126,45 +142,50 @@ func _on_frog_base_scene_vital(allegiance: bool, names: String) -> void:
 	FrogRessources.append(frog)
 
 	frogs_processed += 1
-	$Schlauch.hide()
-	Frog.VitalTimer.stop()
+	$Game/Schlauch.hide()
+	Frog_Asset.VitalTimer.stop()
 
 
 
 
 func InstanceFrog():
-	Frog = PackedSceneFrog.instantiate()
-	Frog.scale = Vector2(5, 5)
-	Frog.position = $FrogPos.position
-	Frog.death.connect(_on_frog_base_scene_death.bind())
-	Frog.vital.connect(_on_frog_base_scene_vital.bind())
-	Frog.initialize($FrogPos.position, FrogRessources.pick_random())
-	add_child(Frog)
+	if state == GlobalStateEnum.game:
+		Frog_Asset = PackedSceneFrog.instantiate()
+		Frog_Asset.scale = Vector2(5, 5)
+		Frog_Asset.position = $Game/FrogPos.position
+		Frog_Asset.death.connect(_on_frog_base_scene_death.bind())
+		Frog_Asset.vital.connect(_on_frog_base_scene_vital.bind())
+		Frog_Asset.LungenKollapsPerSekunde += frogs_processed 
+		Frog_Asset.initialize($Game/FrogPos.position, FrogRessources.pick_random())
+		$Game.add_child(Frog_Asset)
 
 func _on_splosion_timer_timeout() -> void:
-	$Splosion.hide()
+	$Game/Splosion.hide()
 	InstanceFrog()
 
 
 func _on_button_pressed() -> void:
+	if Frog_Asset != null:
+		Frog_Asset.queue_free()
 	pass # Replace with function body.
 	frogs_processed = 0
 	score = 0
 	state = GlobalStateEnum.game
 	$VictoryScreen.hide()
 	InstanceFrog()
-	$EndTimer.start()
+	$Game.show()
+	$Game/EndTimer.start()
 
 
 func _on_pop_2_finished() -> void:
-	Frog.queue_free()
+	Frog_Asset.queue_free()
 	InstanceFrog()
-	$Schlauch.show()
+	$Game/Schlauch.show()
 
 
 func _on_serial_stuffs_rpm_reader(ink: float) -> void:
 	if state == GlobalStateEnum.game:
-		Frog.Pump_rpm(ink)
+		Frog_Asset.Pump_rpm(ink)
 	elif state == GlobalStateEnum.main:
 		if ink > 2250:
 			starter += ink/100
