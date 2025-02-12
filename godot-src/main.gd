@@ -37,12 +37,12 @@ func _process(_delta: float) -> void:
 	match state:
 		GlobalStateEnum.game:
 			if !Frog_Asset == null:
-				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog_Asset.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog_Asset.VitalTimer.time_left) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + "\n Frogs Saved:" + str(frogs_saved) + "\n Nazis killed: " + str(nazis_killed) + "\n Nazis saved: " + str(nazis_saved)
+				label.text = "EndTimer:" + str(ceil($Game/EndTimer.time_left)) +  "\n Score:" + str(score) + "\n" + "Current: " + str(Frog_Asset.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog_Asset.VitalTimer.time_left) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + "\n Frogs Saved:" + str(frogs_saved) + "\n Nazis killed: " + str(nazis_killed) + "\n Nazis saved: " + str(nazis_saved)
 				$Game/Schlauch.global_position = Frog_Asset.Schlauchpunkt.global_position
 				timerProgress.value = Frog_Asset.VitalTimer.time_left / Frog_Asset.VitalTimer.wait_time * 100
-
+				$Game/RadialBar2/TextureProgressBar.value = ceil($Game/EndTimer.time_left)/150 * 100
 			else:
-				label.text = "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
+				label.text = "EndTimer:" + str(ceil($Game/EndTimer.time_left)) + "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
 
 			$VictoryScreen/Label.text = "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
 		GlobalStateEnum.result:
