@@ -69,7 +69,6 @@ size_flags_vertical = 4
 [node name="EndTimer" type="Timer" parent="Game"]
 wait_time = 150.0
 one_shot = true
-autostart = true
 
 [node name="FrogPos" type="Marker2D" parent="Game"]
 position = Vector2(562, 437)
@@ -139,12 +138,15 @@ scale = Vector2(5.25882, 3.75253)
 texture = ExtResource("2_b7csg")
 
 [node name="Label" type="Label" parent="VictoryScreen"]
-offset_left = 100.0
-offset_top = 150.0
-offset_right = 688.0
-offset_bottom = 423.0
-theme_override_font_sizes/font_size = 200
-text = "Score:"
+offset_left = 94.0
+offset_top = 8.0
+offset_right = 905.0
+offset_bottom = 707.0
+theme_override_font_sizes/font_size = 75
+text = "Score:
+Processed Frogs:
+2
+3"
 
 [node name="Button" type="Button" parent="VictoryScreen"]
 offset_left = 100.0

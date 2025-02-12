@@ -13,6 +13,10 @@ enum GlobalStateEnum {main, game, pause, result, credits}
 var state: GlobalStateEnum
 var prePauseState: GlobalStateEnum
 @export var frogs_processed: int
+var frogs_killed: int = 0
+var frogs_saved: int = 0
+var nazis_killed: int = 0
+var nazis_saved: int = 0
 @onready var timerProgress: TextureProgressBar = 		$Game/RadialBar/TextureProgressBar
 
 var start_barrier: float = 50;
@@ -33,14 +37,14 @@ func _process(_delta: float) -> void:
 	match state:
 		GlobalStateEnum.game:
 			if !Frog_Asset == null:
-				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog_Asset.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog_Asset.VitalTimer.time_left)
+				label.text = "Score:" + str(score) + "\n" + "Current: " + str(Frog_Asset.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog_Asset.VitalTimer.time_left) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + "\n Frogs Saved:" + str(frogs_saved) + "\n Nazis killed: " + str(nazis_killed) + "\n Nazis saved: " + str(nazis_saved)
 				$Game/Schlauch.global_position = Frog_Asset.Schlauchpunkt.global_position
 				timerProgress.value = Frog_Asset.VitalTimer.time_left / Frog_Asset.VitalTimer.wait_time * 100
 
 			else:
-				label.text = "Score:" + str(score)
+				label.text = "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
 
-			$VictoryScreen/Label.text = "Score:" + str(score)
+			$VictoryScreen/Label.text = "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
 		GlobalStateEnum.result:
 			pass
 		GlobalStateEnum.main:
@@ -91,7 +95,7 @@ func PauseSwitcher() -> void:
 		Frog_Asset.PrePauseState = Frog_Asset.state
 		Frog_Asset.state = Frog_Asset.StateEnum.pause
 		Frog_Asset.LungenKollapsierer.paused = true
-		Frog_Asset.LungenKollapsPerSekunde += frogs_processed
+		Frog_Asset.LungenKollapsPerSekunde += randi_range(0, frogs_processed)
 		$PauseScreen.visible = true
 		Frog_Asset.VitalTimer.paused = true
 
@@ -100,21 +104,16 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) 
 	print("BSCD")
 
 
-	var frog: int = -1
-	for i in range(FrogRessources.size()-1):
-		if frog==-1:
-			if FrogRessources[i].Name == names:
-				frog = i
-	
-	FrogRessources.remove_at(frog)
+
 	FrogRessources.append(AllFrogs.pick_random())
 
 	frogs_processed += 1
-	
 	if allegiance:
 		score -= DeathPenalty
+		frogs_killed += 1
 	else:
 		score += VitalityIncrease
+		nazis_killed += 1
 	if (cause == Frog.StateEnum.splode):
 		$Game/Pop.play()
 		$Game/Splosion.show()
@@ -130,8 +129,10 @@ func _on_frog_base_scene_vital(allegiance: bool, names: String) -> void:
 	$Game/Pop2.play()
 	if allegiance:
 		score += VitalityIncrease
+		frogs_saved += 1
 	else:
 		score -= DeathPenalty
+		nazis_saved += 1
 
 	var frog: FrogAssets = null
 	for i in range(FrogRessources.size()-1):
@@ -169,6 +170,10 @@ func _on_button_pressed() -> void:
 		Frog_Asset.queue_free()
 	pass # Replace with function body.
 	frogs_processed = 0
+	frogs_saved = 0
+	frogs_killed = 0
+	nazis_killed = 0
+	nazis_saved = 0
 	score = 0
 	state = GlobalStateEnum.game
 	$VictoryScreen.hide()
@@ -187,7 +192,7 @@ func _on_serial_stuffs_rpm_reader(ink: float) -> void:
 	if state == GlobalStateEnum.game:
 		Frog_Asset.Pump_rpm(ink)
 	elif state == GlobalStateEnum.main:
-		if ink > 2250:
+		if ink > 1750:
 			starter += ink/100
 
 
@@ -204,6 +209,12 @@ func _on_close_button_pressed() -> void:
 
 
 func Game_Start() -> void:
+	frogs_processed = 0
+	frogs_saved = 0
+	frogs_killed = 0
+	nazis_killed = 0
+	nazis_saved = 0
+	$Game/EndTimer.start()
 	state = GlobalStateEnum.game
 	$TitleScreen.hide()
 	InstanceFrog()

@@ -25,6 +25,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="frogcubator"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+
 [input]
 
 blow={

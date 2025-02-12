@@ -99,8 +99,8 @@ func _input(event: InputEvent) -> void:
 
 func Pump_rpm(ink: float):
 	print("SIGNAL RECEIVED" + str(ink))
-	if ink > 2200:
-		InputFloat = (ink - 2200) / 100
+	if ink > 1750:
+		InputFloat = (ink - 1750) / 100
 
 func _on_lungen_kollapsierer_timeout() -> void:
 	if state == StateEnum.goldilocks:
