@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://vuimade7i4xx"]
+[gd_scene load_steps=7 format=3 uid="uid://vuimade7i4xx"]
 
 [ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="1_yu5fs"]
 [ext_resource type="Texture2D" uid="uid://dhcpt0nui4h3i" path="res://Graphics/schlauch.png" id="2_umwt1"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="3_nbrdj"]
 [ext_resource type="AudioStream" uid="uid://c1ythgqhf53b1" path="res://SFX/balloon-pop-48030.mp3" id="4_ia3wh"]
 [ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://Misc/radial_bar.tscn" id="5_5tofm"]
-[ext_resource type="PackedScene" uid="uid://ccr1qsix27x1h" path="res://Misc/serial_stuffs.tscn" id="6_7gh74"]
 [ext_resource type="Texture2D" uid="uid://dggugbmotlo1t" path="res://Graphics/Splosion.png" id="7_63wfh"]
 
 [node name="Game" type="CanvasLayer"]
@@ -21,7 +20,7 @@ scale = Vector2(0.27, 0.27)
 texture = ExtResource("2_umwt1")
 offset = Vector2(1240, 53)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="DebugData" type="RichTextLabel" parent="."]
 offset_left = 46.0
 offset_top = 42.0
 offset_right = 689.0
@@ -30,7 +29,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="EndTimer" type="Timer" parent="."]
-wait_time = 150.0
+wait_time = 5.0
 one_shot = true
 
 [node name="FrogPos" type="Marker2D" parent="."]
@@ -58,8 +57,6 @@ offset_left = 1000.0
 offset_top = 84.0
 offset_right = 833.6
 offset_bottom = -70.8
-
-[node name="SerialStuffs" parent="." instance=ExtResource("6_7gh74")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

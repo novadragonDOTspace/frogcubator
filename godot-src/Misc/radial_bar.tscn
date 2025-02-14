@@ -6,8 +6,8 @@
 layout_mode = 3
 anchor_right = 0.13
 anchor_bottom = 0.215
-offset_right = -0.400009
-offset_bottom = 0.199997
+offset_right = -36.4
+offset_bottom = -21.8
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -15,6 +15,6 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-value = 33.0
+value = 100.0
 fill_mode = 5
 texture_progress = ExtResource("1_anorn")

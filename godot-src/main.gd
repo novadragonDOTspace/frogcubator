@@ -1,6 +1,6 @@
 extends Node2D
 @onready var Frog_Asset: Frog
-@onready var label: RichTextLabel = $Game/RichTextLabel
+@onready var label: RichTextLabel = $Game/DebugData
 @export var PackedSceneFrog: PackedScene
 @export var adi: FrogAssets
 @export var DeathPenalty: int
@@ -26,6 +26,14 @@ var starter = 0;
 var score: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SerialStuffs.RPMReader.connect(_on_serial_stuffs_rpm_reader)
+	$TitleScreen/Button3.pressed.connect(Game_Start)
+	$Game/Splosion/Timer.timeout.connect(_on_splosion_timer_timeout)
+	$Game/Pop2.finished.connect(_on_pop_2_finished)
+	$Game/EndTimer.timeout.connect(_on_end_timer_timeout)
+	$VictoryScreen/Button.pressed.connect(_on_button_pressed)
+	$VictoryScreen/Button2.pressed.connect(_on_button_2_pressed)
+	$CreditsScreen/Button.pressed.connect(_on_close_button_pressed)
 	state = GlobalStateEnum.main
 	$music.play()
 	
@@ -33,14 +41,14 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match state:
 		GlobalStateEnum.game:
 			if !Frog_Asset == null:
 				label.text = "EndTimer:" + str(ceil($Game/EndTimer.time_left)) +  "\n Score:" + str(score) + "\n" + "Current: " + str(Frog_Asset.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog_Asset.VitalTimer.time_left) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + "\n Frogs Saved:" + str(frogs_saved) + "\n Nazis killed: " + str(nazis_killed) + "\n Nazis saved: " + str(nazis_saved)
 				$Game/Schlauch.global_position = Frog_Asset.Schlauchpunkt.global_position
 				timerProgress.value = Frog_Asset.VitalTimer.time_left / Frog_Asset.VitalTimer.wait_time * 100
-				$Game/RadialBar2/TextureProgressBar.value = ceil($Game/EndTimer.time_left)/150 * 100
+				$Game/RadialBar2/TextureProgressBar.value = ceil($Game/EndTimer.time_left)/ $Game/EndTimer.wait_time * 100
 			else:
 				label.text = "EndTimer:" + str(ceil($Game/EndTimer.time_left)) + "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
 
@@ -102,9 +110,6 @@ func PauseSwitcher() -> void:
 
 func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) -> void:
 	print("BSCD")
-
-
-
 	FrogRessources.append(AllFrogs.pick_random())
 
 	frogs_processed += 1
