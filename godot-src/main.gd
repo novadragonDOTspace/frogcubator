@@ -161,7 +161,7 @@ func InstanceFrog():
 		Frog_Asset.position = $Game/FrogPos.position
 		Frog_Asset.death.connect(_on_frog_base_scene_death.bind())
 		Frog_Asset.vital.connect(_on_frog_base_scene_vital.bind())
-		Frog_Asset.LungenKollapsPerSekunde += frogs_processed 
+		Frog_Asset.LungenKollapsPerSekunde += randf_range(-frogs_processed, frogs_processed/2) + frogs_processed/2
 		Frog_Asset.initialize($Game/FrogPos.position, FrogRessources.pick_random())
 		$Game.add_child(Frog_Asset)
 
