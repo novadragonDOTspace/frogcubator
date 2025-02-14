@@ -12,11 +12,7 @@ extends Node2D
 enum GlobalStateEnum {main, game, pause, result, credits}
 var state: GlobalStateEnum
 var prePauseState: GlobalStateEnum
-@export var frogs_processed: int
-var frogs_killed: int = 0
-var frogs_saved: int = 0
-var nazis_killed: int = 0
-var nazis_saved: int = 0
+
 @onready var timerProgress: TextureProgressBar = 		$Game/RadialBar/TextureProgressBar
 
 var start_barrier: float = 50;
@@ -44,15 +40,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	match state:
 		GlobalStateEnum.game:
-			if !Frog_Asset == null:
-				label.text = "EndTimer:" + str(ceil($Game/EndTimer.time_left)) +  "\n Score:" + str(score) + "\n" + "Current: " + str(Frog_Asset.CurrentLungenKapazität) + "\n" + "Timer:" + str(Frog_Asset.VitalTimer.time_left) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + "\n Frogs Saved:" + str(frogs_saved) + "\n Nazis killed: " + str(nazis_killed) + "\n Nazis saved: " + str(nazis_saved)
-				$Game/Schlauch.global_position = Frog_Asset.Schlauchpunkt.global_position
-				timerProgress.value = Frog_Asset.VitalTimer.time_left / Frog_Asset.VitalTimer.wait_time * 100
-				$Game/RadialBar2/TextureProgressBar.value = ceil($Game/EndTimer.time_left)/ $Game/EndTimer.wait_time * 100
-			else:
-				label.text = "EndTimer:" + str(ceil($Game/EndTimer.time_left)) + "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
-
-			$VictoryScreen/Label.text = "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
+			pass
 		GlobalStateEnum.result:
 			pass
 		GlobalStateEnum.main:
@@ -103,7 +91,6 @@ func PauseSwitcher() -> void:
 		Frog_Asset.PrePauseState = Frog_Asset.state
 		Frog_Asset.state = Frog_Asset.StateEnum.pause
 		Frog_Asset.LungenKollapsierer.paused = true
-		Frog_Asset.LungenKollapsPerSekunde += randi_range(0, frogs_processed)
 		$PauseScreen.visible = true
 		Frog_Asset.VitalTimer.paused = true
 

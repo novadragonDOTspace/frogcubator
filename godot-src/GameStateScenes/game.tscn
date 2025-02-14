@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://vuimade7i4xx"]
+[gd_scene load_steps=8 format=3 uid="uid://vuimade7i4xx"]
 
+[ext_resource type="Script" path="res://GameStateScenes/game.gd" id="1_u2lit"]
 [ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="1_yu5fs"]
 [ext_resource type="Texture2D" uid="uid://dhcpt0nui4h3i" path="res://Graphics/schlauch.png" id="2_umwt1"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="3_nbrdj"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dggugbmotlo1t" path="res://Graphics/Splosion.png" id="7_63wfh"]
 
 [node name="Game" type="CanvasLayer"]
+script = ExtResource("1_u2lit")
 
 [node name="Gurke" parent="." instance=ExtResource("1_yu5fs")]
 position = Vector2(568, -182)
@@ -46,13 +48,13 @@ bus = &"SFX"
 [node name="Pop2" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
 
-[node name="RadialBar" parent="." instance=ExtResource("5_5tofm")]
+[node name="CurrentFrogTimer" parent="." instance=ExtResource("5_5tofm")]
 offset_left = 75.0
 offset_top = 84.0
 offset_right = -91.4
 offset_bottom = -70.8
 
-[node name="RadialBar2" parent="." instance=ExtResource("5_5tofm")]
+[node name="EndTimerBar" parent="." instance=ExtResource("5_5tofm")]
 offset_left = 1000.0
 offset_top = 84.0
 offset_right = 833.6
