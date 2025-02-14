@@ -57,11 +57,11 @@ func _ready() -> void:
 	state = StateEnum.goldilocks
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+	
+func _physics_process(delta: float) -> void:
 	match state:
 		StateEnum.goldilocks:
-	
+	 
 			CurrentLungenKapazität += InputFloat * 15
 			if CurrentLungenKapazität > MaxLungenKapazität:
 				print("Splode Size")
@@ -88,7 +88,6 @@ func _process(_delta: float) -> void:
 			FrogIshappy()
 		StateEnum.happy:
 			pass
-
 		
 func _input(event: InputEvent) -> void:
 	if state == StateEnum.goldilocks:

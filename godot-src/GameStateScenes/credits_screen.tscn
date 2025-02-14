@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl7hluilbp6vp"]
+
+[ext_resource type="Texture2D" uid="uid://dg7rp5tjq3pr8" path="res://Graphics/team_Starbugs_bechergroe_Kopie.png" id="1_1ed0p"]
+
+[node name="CreditsScreen" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(639.833, 242.75)
+scale = Vector2(0.641167, 0.643)
+texture = ExtResource("1_1ed0p")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1143.0
+offset_top = 19.0
+offset_right = 1252.0
+offset_bottom = 50.0
+text = "Close Credits"

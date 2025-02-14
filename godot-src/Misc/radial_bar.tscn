@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cysyw7so3y2ss"]
 
-[ext_resource type="Texture2D" uid="uid://d4qduaqngdsm" path="res://progress-bar-circle.png" id="1_anorn"]
+[ext_resource type="Texture2D" uid="uid://d4qduaqngdsm" path="res://Misc/progress-bar-circle.png" id="1_anorn"]
 
 [node name="RadialBar" type="Control"]
 layout_mode = 3

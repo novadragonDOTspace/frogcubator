@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhcpt0nui4h3i"
-path="res://.godot/imported/schlauch.png-2b17c90d00fbef50ab52abb00f3d8869.ctex"
+uid="uid://dggugbmotlo1t"
+path="res://.godot/imported/Splosion.png-01bdb8eaae5f4c9b65ce00371e1da461.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://schlauch.png"
-dest_files=["res://.godot/imported/schlauch.png-2b17c90d00fbef50ab52abb00f3d8869.ctex"]
+source_file="res://Graphics/Splosion.png"
+dest_files=["res://.godot/imported/Splosion.png-01bdb8eaae5f4c9b65ce00371e1da461.ctex"]
 
 [params]
 

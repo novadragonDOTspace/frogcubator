@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg7rp5tjq3pr8"
-path="res://.godot/imported/team_Starbugs_bechergroe_Kopie.png-a97f28b99203640a07d394e723126fef.ctex"
+uid="uid://bgsq3heshlrex"
+path="res://.godot/imported/20250126_084835.jpg-15af12c1c0a4dd2571aafd7f7b269834.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://team_Starbugs_bechergroe_Kopie.png"
-dest_files=["res://.godot/imported/team_Starbugs_bechergroe_Kopie.png-a97f28b99203640a07d394e723126fef.ctex"]
+source_file="res://Graphics/20250126_084835.jpg"
+dest_files=["res://.godot/imported/20250126_084835.jpg-15af12c1c0a4dd2571aafd7f7b269834.ctex"]
 
 [params]
 

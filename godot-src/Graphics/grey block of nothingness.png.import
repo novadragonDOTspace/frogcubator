@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb5ocxx0objf0"
-path="res://.godot/imported/Frogobator_keyart_neu4.jpg-a6793c4cd318057f29cad81239a294e3.ctex"
+uid="uid://bo58dxcm3f4nx"
+path="res://.godot/imported/grey block of nothingness.png-3cbf2674da7f8d7c2efe7bfd680532a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Frogobator_keyart_neu4.jpg"
-dest_files=["res://.godot/imported/Frogobator_keyart_neu4.jpg-a6793c4cd318057f29cad81239a294e3.ctex"]
+source_file="res://Graphics/grey block of nothingness.png"
+dest_files=["res://.godot/imported/grey block of nothingness.png-3cbf2674da7f8d7c2efe7bfd680532a7.ctex"]
 
 [params]
 

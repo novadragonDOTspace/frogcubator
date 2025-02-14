@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://gicbo4fn6hck"]
+
+[ext_resource type="Texture2D" uid="uid://bo58dxcm3f4nx" path="res://Graphics/grey block of nothingness.png" id="1_0yyp4"]
+
+[node name="VictoryScreen" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.854902)
+position = Vector2(668.5, 352.5)
+scale = Vector2(5.25882, 3.75253)
+texture = ExtResource("1_0yyp4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 94.0
+offset_top = 8.0
+offset_right = 905.0
+offset_bottom = 707.0
+theme_override_font_sizes/font_size = 75
+text = "Score:
+Processed Frogs:
+2
+3"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 100.0
+offset_top = 500.0
+offset_right = 600.0
+offset_bottom = 600.0
+text = "restart
+"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 700.0
+offset_top = 500.0
+offset_right = 1200.0
+offset_bottom = 600.0
+text = "show credits
+"

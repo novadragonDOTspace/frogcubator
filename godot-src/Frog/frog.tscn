@@ -8,6 +8,7 @@
 radius = 48.28
 
 [node name="FrogBaseScene" type="Area2D"]
+physics_interpolation_mode = 1
 script = ExtResource("1_5p76s")
 
 [node name="LungenKollapsierer" type="Timer" parent="."]

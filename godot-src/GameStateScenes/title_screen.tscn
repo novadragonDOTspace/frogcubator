@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://in2flthd38lx"]
+
+[ext_resource type="Texture2D" uid="uid://cb5ocxx0objf0" path="res://Graphics/Frogobator_keyart_neu4.jpg" id="1_07njj"]
+[ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://Misc/radial_bar.tscn" id="2_bj8oo"]
+
+[node name="TitleScreen" type="CanvasLayer"]
+
+[node name="FrogobatorKeyartNeu4" type="Sprite2D" parent="."]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("1_07njj")
+centered = false
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 106.0
+offset_top = 547.0
+offset_right = 573.0
+offset_bottom = 651.0
+text = "Pump or Press this Button to Start the Game Game
+"
+
+[node name="RadialBar" parent="." instance=ExtResource("2_bj8oo")]
+offset_left = 632.0
+offset_top = 555.0
+offset_right = 632.0
+offset_bottom = 555.0

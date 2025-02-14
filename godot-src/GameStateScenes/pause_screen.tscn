@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cia5ixdcau8kk"]
+
+[ext_resource type="Texture2D" uid="uid://bo58dxcm3f4nx" path="res://Graphics/grey block of nothingness.png" id="1_d186l"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.854902)
+position = Vector2(660, 362)
+scale = Vector2(5.19216, 3.84849)
+texture = ExtResource("1_d186l")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 322.0
+offset_top = 210.0
+offset_right = 901.0
+offset_bottom = 483.0
+theme_override_font_sizes/font_size = 200
+text = "Pause"

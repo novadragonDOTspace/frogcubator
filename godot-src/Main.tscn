@@ -1,39 +1,34 @@
-[gd_scene load_steps=35 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=30 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="1_q7cwp"]
-[ext_resource type="Texture2D" uid="uid://bo58dxcm3f4nx" path="res://grey block of nothingness.png" id="2_b7csg"]
 [ext_resource type="Script" path="res://Frog/frog_design.gd" id="3_0roxc"]
 [ext_resource type="Resource" uid="uid://bm63b0xho8u7c" path="res://Frog/Frösche/norman.tres" id="4_1obk1"]
 [ext_resource type="Resource" uid="uid://gc30vx0h4l4v" path="res://Frog/Frösche/Blondi.tres" id="4_7yntd"]
-[ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="4_e2241"]
 [ext_resource type="Resource" uid="uid://bkh0ff5atbtes" path="res://Frog/Frösche/Nina.tres" id="5_87acx"]
 [ext_resource type="Resource" uid="uid://cm2ddj6vxm51w" path="res://Frog/Frösche/ben.tres" id="5_g23t1"]
-[ext_resource type="Texture2D" uid="uid://dggugbmotlo1t" path="res://Splosion.png" id="5_qpwgr"]
 [ext_resource type="Resource" uid="uid://ymrn2voc8wjs" path="res://Frog/Frösche/Nora.tres" id="6_fn6o2"]
 [ext_resource type="Resource" uid="uid://dl2hvcwlnc0ab" path="res://Frog/Frösche/Daniel.tres" id="7_5q81m"]
 [ext_resource type="Resource" uid="uid://r72ttc66doif" path="res://Frog/Frösche/Naiko.tres" id="8_6ofd6"]
 [ext_resource type="AudioStream" uid="uid://bp1713wvpkhv1" path="res://SFX/Danke.wav" id="11_d32gn"]
-[ext_resource type="Script" path="res://camera_2d.gd" id="11_hik51"]
 [ext_resource type="Resource" uid="uid://cheres6a22kd" path="res://Frog/Frösche/Nefin.tres" id="11_xxbrj"]
 [ext_resource type="AudioStream" uid="uid://cetnx6o6i660j" path="res://SFX/schweinehund.wav" id="12_t7iru"]
 [ext_resource type="AudioStream" uid="uid://b0udhyq56k8v7" path="res://SFX/Sterbsterb.wav" id="13_my4mu"]
 [ext_resource type="AudioStream" uid="uid://cg4pfjc3xp473" path="res://SFX/Audi.wav" id="14_cyfsm"]
 [ext_resource type="AudioStream" uid="uid://b8pbfm6p4u30b" path="res://SFX/Fabi.wav" id="15_1j4so"]
-[ext_resource type="Texture2D" uid="uid://dhcpt0nui4h3i" path="res://schlauch.png" id="15_ifhhe"]
-[ext_resource type="AudioStream" uid="uid://c1ythgqhf53b1" path="res://SFX/balloon-pop-48030.mp3" id="16_qmes8"]
 [ext_resource type="AudioStream" uid="uid://d4kacft3xs2ty" path="res://SFX/Gadinenschal.wav" id="16_vvhvk"]
 [ext_resource type="AudioStream" uid="uid://dvbkeqragvhvx" path="res://SFX/Quakquakquak.wav" id="17_ujik2"]
 [ext_resource type="AudioStream" uid="uid://bt1u7xscaxdru" path="res://SFX/you suck.wav" id="18_gtqh4"]
 [ext_resource type="AudioStream" uid="uid://djmijylbglnvo" path="res://SFX/Tofumais.wav" id="19_a4okc"]
 [ext_resource type="AudioStream" uid="uid://r0yiuepdffsn" path="res://SFX/Viva la Sä.wav" id="20_kau2f"]
 [ext_resource type="AudioStream" uid="uid://dvn0cxkwrmksy" path="res://SFX/Rinderkatze.wav" id="21_5wmej"]
-[ext_resource type="Texture2D" uid="uid://cb5ocxx0objf0" path="res://Frogobator_keyart_neu4.jpg" id="22_hct28"]
-[ext_resource type="Texture2D" uid="uid://dg7rp5tjq3pr8" path="res://team_Starbugs_bechergroe_Kopie.png" id="28_a6q0b"]
-[ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://radial_bar.tscn" id="29_xk8uj"]
-[ext_resource type="AudioStream" uid="uid://cyyt0d647uqkw" path="res://msc/BenFrosch_Music_Demo_loop.mp3" id="30_nvini"]
-[ext_resource type="Texture2D" uid="uid://bgsq3heshlrex" path="res://20250126_084835.jpg" id="31_m8ctd"]
-[ext_resource type="PackedScene" uid="uid://ccr1qsix27x1h" path="res://serial_stuffs.tscn" id="32_ulfq4"]
+[ext_resource type="PackedScene" uid="uid://vuimade7i4xx" path="res://GameStateScenes/game.tscn" id="23_2fnpq"]
+[ext_resource type="PackedScene" uid="uid://in2flthd38lx" path="res://GameStateScenes/title_screen.tscn" id="24_lgn6t"]
+[ext_resource type="PackedScene" uid="uid://gicbo4fn6hck" path="res://GameStateScenes/victory_screen.tscn" id="25_1f6s6"]
+[ext_resource type="PackedScene" uid="uid://cia5ixdcau8kk" path="res://GameStateScenes/pause_screen.tscn" id="26_tuolh"]
+[ext_resource type="PackedScene" uid="uid://dl7hluilbp6vp" path="res://GameStateScenes/credits_screen.tscn" id="27_bu04g"]
+[ext_resource type="AudioStream" uid="uid://cyyt0d647uqkw" path="res://SFX/Music/BenFrosch_Music_Demo_loop.mp3" id="30_nvini"]
+[ext_resource type="Texture2D" uid="uid://bgsq3heshlrex" path="res://Graphics/20250126_084835.jpg" id="31_m8ctd"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cn5yq")
@@ -45,162 +40,18 @@ FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResou
 AllFrogs = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("11_xxbrj"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
 "sprüche" = Array[AudioStream]([ExtResource("11_d32gn"), ExtResource("12_t7iru"), ExtResource("13_my4mu"), ExtResource("14_cyfsm"), ExtResource("15_1j4so"), ExtResource("16_vvhvk"), ExtResource("17_ujik2"), ExtResource("18_gtqh4"), ExtResource("19_a4okc"), ExtResource("20_kau2f"), ExtResource("21_5wmej")])
 
-[node name="Game" type="CanvasLayer" parent="."]
+[node name="Game" parent="." instance=ExtResource("23_2fnpq")]
 
-[node name="Gurke" parent="Game" instance=ExtResource("4_e2241")]
-position = Vector2(568, -182)
-scale = Vector2(0.1, 0.1)
+[node name="TitleScreen" parent="." instance=ExtResource("24_lgn6t")]
 
-[node name="Schlauch" type="Sprite2D" parent="Game"]
-z_index = 1
-position = Vector2(-115, 112)
-scale = Vector2(0.27, 0.27)
-texture = ExtResource("15_ifhhe")
-offset = Vector2(1240, 53)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Game"]
-offset_left = 46.0
-offset_top = 42.0
-offset_right = 689.0
-offset_bottom = 315.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="EndTimer" type="Timer" parent="Game"]
-wait_time = 150.0
-one_shot = true
-
-[node name="FrogPos" type="Marker2D" parent="Game"]
-position = Vector2(562, 437)
-
-[node name="Camera2D" type="Camera2D" parent="Game"]
-position = Vector2(578, 323)
-script = ExtResource("11_hik51")
-
-[node name="Pop" type="AudioStreamPlayer2D" parent="Game"]
-stream = ExtResource("16_qmes8")
-bus = &"SFX"
-
-[node name="Pop2" type="AudioStreamPlayer2D" parent="Game"]
-bus = &"SFX"
-
-[node name="RadialBar" parent="Game" instance=ExtResource("29_xk8uj")]
-offset_left = 75.0
-offset_top = 84.0
-offset_right = -91.4
-offset_bottom = -70.8
-
-[node name="RadialBar2" parent="Game" instance=ExtResource("29_xk8uj")]
-offset_left = 1000.0
-offset_top = 84.0
-offset_right = 833.6
-offset_bottom = -70.8
-
-[node name="SerialStuffs" parent="Game" instance=ExtResource("32_ulfq4")]
-
-[node name="Timer" type="Timer" parent="Game"]
-wait_time = 0.1
-autostart = true
-
-[node name="Splosion" type="Sprite2D" parent="Game"]
-visible = false
-z_index = 2
-position = Vector2(534.125, 318)
-scale = Vector2(0.22, 0.22)
-texture = ExtResource("5_qpwgr")
-
-[node name="Timer" type="Timer" parent="Game/Splosion"]
-wait_time = 0.5
-one_shot = true
-
-[node name="TitleScreen" type="CanvasLayer" parent="."]
-
-[node name="FrogobatorKeyartNeu4" type="Sprite2D" parent="TitleScreen"]
-scale = Vector2(0.666667, 0.666667)
-texture = ExtResource("22_hct28")
-centered = false
-
-[node name="Button3" type="Button" parent="TitleScreen"]
-offset_left = 106.0
-offset_top = 547.0
-offset_right = 573.0
-offset_bottom = 651.0
-text = "Pump or Press this Button to Start the Game Game
-"
-
-[node name="RadialBar" parent="TitleScreen" instance=ExtResource("29_xk8uj")]
-offset_left = 632.0
-offset_top = 555.0
-offset_right = 632.0
-offset_bottom = 555.0
-
-[node name="VictoryScreen" type="CanvasLayer" parent="."]
+[node name="VictoryScreen" parent="." instance=ExtResource("25_1f6s6")]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="VictoryScreen"]
-modulate = Color(1, 1, 1, 0.854902)
-position = Vector2(668.5, 352.5)
-scale = Vector2(5.25882, 3.75253)
-texture = ExtResource("2_b7csg")
-
-[node name="Label" type="Label" parent="VictoryScreen"]
-offset_left = 94.0
-offset_top = 8.0
-offset_right = 905.0
-offset_bottom = 707.0
-theme_override_font_sizes/font_size = 75
-text = "Score:
-Processed Frogs:
-2
-3"
-
-[node name="Button" type="Button" parent="VictoryScreen"]
-offset_left = 100.0
-offset_top = 500.0
-offset_right = 600.0
-offset_bottom = 600.0
-text = "restart
-"
-
-[node name="Button2" type="Button" parent="VictoryScreen"]
-offset_left = 700.0
-offset_top = 500.0
-offset_right = 1200.0
-offset_bottom = 600.0
-text = "show credits
-"
-
-[node name="PauseScreen" type="CanvasLayer" parent="."]
+[node name="PauseScreen" parent="." instance=ExtResource("26_tuolh")]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseScreen"]
-modulate = Color(1, 1, 1, 0.854902)
-position = Vector2(660, 362)
-scale = Vector2(5.19216, 3.84849)
-texture = ExtResource("2_b7csg")
-
-[node name="Label" type="Label" parent="PauseScreen"]
-offset_left = 322.0
-offset_top = 210.0
-offset_right = 901.0
-offset_bottom = 483.0
-theme_override_font_sizes/font_size = 200
-text = "Pause"
-
-[node name="CreditsScreen" type="CanvasLayer" parent="."]
+[node name="CreditsScreen" parent="." instance=ExtResource("27_bu04g")]
 visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="CreditsScreen"]
-position = Vector2(639.833, 242.75)
-scale = Vector2(0.641167, 0.643)
-texture = ExtResource("28_a6q0b")
-
-[node name="Button" type="Button" parent="CreditsScreen"]
-offset_left = 1143.0
-offset_top = 19.0
-offset_right = 1252.0
-offset_bottom = 50.0
-text = "Close Credits"
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 visible = false
@@ -212,13 +63,3 @@ bus = &"Music"
 position = Vector2(579, 444)
 scale = Vector2(0.320958, 0.320958)
 texture = ExtResource("31_m8ctd")
-
-[connection signal="timeout" from="Game/EndTimer" to="." method="_on_end_timer_timeout"]
-[connection signal="finished" from="Game/Pop2" to="." method="_on_pop_2_finished"]
-[connection signal="RPMReader" from="Game/SerialStuffs" to="." method="_on_serial_stuffs_rpm_reader"]
-[connection signal="timeout" from="Game/Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Game/Splosion/Timer" to="." method="_on_splosion_timer_timeout"]
-[connection signal="pressed" from="TitleScreen/Button3" to="." method="Game_Start"]
-[connection signal="pressed" from="VictoryScreen/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VictoryScreen/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="CreditsScreen/Button" to="." method="_on_close_button_pressed"]
