@@ -1,27 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://vetghxklv21f"]
+[gd_scene load_steps=10 format=3 uid="uid://vetghxklv21f"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
-[ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="1_q7cwp"]
-[ext_resource type="Script" path="res://Frog/frog_design.gd" id="3_0roxc"]
-[ext_resource type="Resource" uid="uid://bm63b0xho8u7c" path="res://Frog/Frösche/norman.tres" id="4_1obk1"]
 [ext_resource type="Resource" uid="uid://gc30vx0h4l4v" path="res://Frog/Frösche/Blondi.tres" id="4_7yntd"]
-[ext_resource type="Resource" uid="uid://bkh0ff5atbtes" path="res://Frog/Frösche/Nina.tres" id="5_87acx"]
-[ext_resource type="Resource" uid="uid://cm2ddj6vxm51w" path="res://Frog/Frösche/ben.tres" id="5_g23t1"]
-[ext_resource type="Resource" uid="uid://ymrn2voc8wjs" path="res://Frog/Frösche/Nora.tres" id="6_fn6o2"]
-[ext_resource type="Resource" uid="uid://dl2hvcwlnc0ab" path="res://Frog/Frösche/Daniel.tres" id="7_5q81m"]
-[ext_resource type="Resource" uid="uid://r72ttc66doif" path="res://Frog/Frösche/Naiko.tres" id="8_6ofd6"]
-[ext_resource type="AudioStream" uid="uid://bp1713wvpkhv1" path="res://SFX/Danke.wav" id="11_d32gn"]
-[ext_resource type="Resource" uid="uid://cheres6a22kd" path="res://Frog/Frösche/Nefin.tres" id="11_xxbrj"]
-[ext_resource type="AudioStream" uid="uid://cetnx6o6i660j" path="res://SFX/schweinehund.wav" id="12_t7iru"]
-[ext_resource type="AudioStream" uid="uid://b0udhyq56k8v7" path="res://SFX/Sterbsterb.wav" id="13_my4mu"]
-[ext_resource type="AudioStream" uid="uid://cg4pfjc3xp473" path="res://SFX/Audi.wav" id="14_cyfsm"]
-[ext_resource type="AudioStream" uid="uid://b8pbfm6p4u30b" path="res://SFX/Fabi.wav" id="15_1j4so"]
-[ext_resource type="AudioStream" uid="uid://d4kacft3xs2ty" path="res://SFX/Gadinenschal.wav" id="16_vvhvk"]
-[ext_resource type="AudioStream" uid="uid://dvbkeqragvhvx" path="res://SFX/Quakquakquak.wav" id="17_ujik2"]
-[ext_resource type="AudioStream" uid="uid://bt1u7xscaxdru" path="res://SFX/you suck.wav" id="18_gtqh4"]
-[ext_resource type="AudioStream" uid="uid://djmijylbglnvo" path="res://SFX/Tofumais.wav" id="19_a4okc"]
-[ext_resource type="AudioStream" uid="uid://r0yiuepdffsn" path="res://SFX/Viva la Sä.wav" id="20_kau2f"]
-[ext_resource type="AudioStream" uid="uid://dvn0cxkwrmksy" path="res://SFX/Rinderkatze.wav" id="21_5wmej"]
 [ext_resource type="PackedScene" uid="uid://vuimade7i4xx" path="res://GameStateScenes/game.tscn" id="23_2fnpq"]
 [ext_resource type="PackedScene" uid="uid://in2flthd38lx" path="res://GameStateScenes/title_screen.tscn" id="24_lgn6t"]
 [ext_resource type="PackedScene" uid="uid://gicbo4fn6hck" path="res://GameStateScenes/victory_screen.tscn" id="25_1f6s6"]
@@ -32,13 +12,7 @@
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cn5yq")
-PackedSceneFrog = ExtResource("1_q7cwp")
 adi = ExtResource("4_7yntd")
-DeathPenalty = 200
-VitalityIncrease = 200
-FrogRessources = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1"), ExtResource("4_7yntd"), ExtResource("4_7yntd"), ExtResource("4_7yntd")])
-AllFrogs = Array[ExtResource("3_0roxc")]([ExtResource("5_g23t1"), ExtResource("4_7yntd"), ExtResource("7_5q81m"), ExtResource("8_6ofd6"), ExtResource("11_xxbrj"), ExtResource("5_87acx"), ExtResource("6_fn6o2"), ExtResource("4_1obk1")])
-"sprüche" = Array[AudioStream]([ExtResource("11_d32gn"), ExtResource("12_t7iru"), ExtResource("13_my4mu"), ExtResource("14_cyfsm"), ExtResource("15_1j4so"), ExtResource("16_vvhvk"), ExtResource("17_ujik2"), ExtResource("18_gtqh4"), ExtResource("19_a4okc"), ExtResource("20_kau2f"), ExtResource("21_5wmej")])
 
 [node name="Game" parent="." instance=ExtResource("23_2fnpq")]
 

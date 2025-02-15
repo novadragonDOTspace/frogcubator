@@ -1,15 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://vuimade7i4xx"]
+[gd_scene load_steps=18 format=3 uid="uid://vuimade7i4xx"]
 
 [ext_resource type="Script" path="res://GameStateScenes/game.gd" id="1_u2lit"]
 [ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="1_yu5fs"]
+[ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="2_nmo6d"]
 [ext_resource type="Texture2D" uid="uid://dhcpt0nui4h3i" path="res://Graphics/schlauch.png" id="2_umwt1"]
+[ext_resource type="Script" path="res://Frog/frog_design.gd" id="3_fvfdi"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="3_nbrdj"]
 [ext_resource type="AudioStream" uid="uid://c1ythgqhf53b1" path="res://SFX/balloon-pop-48030.mp3" id="4_ia3wh"]
+[ext_resource type="Resource" uid="uid://cm2ddj6vxm51w" path="res://Frog/Frösche/ben.tres" id="4_o8e31"]
 [ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://Misc/radial_bar.tscn" id="5_5tofm"]
+[ext_resource type="Resource" uid="uid://gc30vx0h4l4v" path="res://Frog/Frösche/Blondi.tres" id="5_ari7v"]
+[ext_resource type="Resource" uid="uid://dl2hvcwlnc0ab" path="res://Frog/Frösche/Daniel.tres" id="6_k7bdh"]
+[ext_resource type="Resource" uid="uid://r72ttc66doif" path="res://Frog/Frösche/Naiko.tres" id="7_5iod0"]
 [ext_resource type="Texture2D" uid="uid://dggugbmotlo1t" path="res://Graphics/Splosion.png" id="7_63wfh"]
+[ext_resource type="Resource" uid="uid://cheres6a22kd" path="res://Frog/Frösche/Nefin.tres" id="8_qlxfa"]
+[ext_resource type="Resource" uid="uid://bkh0ff5atbtes" path="res://Frog/Frösche/Nina.tres" id="9_g70jg"]
+[ext_resource type="Resource" uid="uid://ymrn2voc8wjs" path="res://Frog/Frösche/Nora.tres" id="10_eawq6"]
+[ext_resource type="Resource" uid="uid://bm63b0xho8u7c" path="res://Frog/Frösche/norman.tres" id="11_h17jo"]
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_u2lit")
+PackedSceneFrog = ExtResource("2_nmo6d")
+AllFrogs = Array[ExtResource("3_fvfdi")]([ExtResource("4_o8e31"), ExtResource("5_ari7v"), ExtResource("6_k7bdh"), ExtResource("7_5iod0"), ExtResource("8_qlxfa"), ExtResource("9_g70jg"), ExtResource("10_eawq6"), ExtResource("11_h17jo")])
+EvilFrogs = Array[ExtResource("3_fvfdi")]([ExtResource("5_ari7v")])
 
 [node name="Gurke" parent="." instance=ExtResource("1_yu5fs")]
 position = Vector2(568, -182)
@@ -74,3 +87,6 @@ texture = ExtResource("7_63wfh")
 [node name="Timer" type="Timer" parent="Splosion"]
 wait_time = 0.5
 one_shot = true
+
+[connection signal="finished" from="Pop2" to="." method="_on_pop_2_finished"]
+[connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]
