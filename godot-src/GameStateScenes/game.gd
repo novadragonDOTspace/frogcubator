@@ -3,13 +3,11 @@ extends CanvasLayer
 @onready var debug_data: RichTextLabel = $DebugData
 @export var PackedSceneFrog: PackedScene
 
-var score: int
 @onready var Frog_Asset: Frog
 var frogs_processed: int
-var frogs_killed: int = 0
-var frogs_saved: int = 0
-var nazis_killed: int = 0
-var nazis_saved: int = 0
+
+@onready var score_keeper: Node = $ScoreKeeper
+
 @onready var end_timer: Timer = $EndTimer
 @onready var current_frog_timer: Control = $CurrentFrogTimer/TextureProgressBar
 @onready var end_timer_bar: Control = $EndTimerBar/TextureProgressBar
@@ -20,10 +18,7 @@ var nazis_saved: int = 0
 @export var sprüche: Array[AudioStream]
 
 
-@export var DeathPenalty: int
-@export var VitalityIncrease: int
 @export var EvilFrogs: Array[FrogAssets]
-
 
 func _ready() -> void:
 	FrogRessources.append_array(AllFrogs)
@@ -35,8 +30,6 @@ func Process(delta: float) -> void:
 		$Schlauch.global_position = Frog_Asset.Schlauchpunkt.global_position
 		current_frog_timer.value = Frog_Asset.VitalTimer.time_left / Frog_Asset.VitalTimer.wait_time * 100
 		end_timer_bar.value = ceil($EndTimer.time_left)/ $EndTimer.wait_time * 100
-	else:
-		debug_data.text = "EndTimer:" + str(ceil($EndTimer.time_left)) + "Score:" + str(score) + "\n" + "Frogs Processed:" + str(frogs_processed) + "\n" + "Frogs killed:" + str(frogs_killed) + " Nazis killed: " + str(nazis_killed) + "\n Frogs Saved:" + str(frogs_saved) + " Nazis Saved:" + str(nazis_saved)
 
 func InstanceFrog():
 	Frog_Asset = PackedSceneFrog.instantiate()
@@ -55,12 +48,7 @@ func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) 
 	FrogRessources.append(AllFrogs.pick_random())
 
 	frogs_processed += 1
-	if allegiance:
-		score -= DeathPenalty
-		frogs_killed += 1
-	else:
-		score += VitalityIncrease
-		nazis_killed += 1
+	score_keeper.KilledAFrog(allegiance, cause)
 	if (cause == Frog.StateEnum.splode):
 		$Pop.play()
 		$Splosion.show()
@@ -74,12 +62,7 @@ func _on_frog_base_scene_vital(allegiance: bool, names: String) -> void:
 	
 	$Pop2.stream = sprüche.pick_random()
 	$Pop2.play()
-	if allegiance:
-		score += VitalityIncrease
-		frogs_saved += 1
-	else:
-		score -= DeathPenalty
-		nazis_saved += 1
+	score_keeper.SavedAFrog(allegiance)
 
 	var frog: FrogAssets = null
 	for i in range(FrogRessources.size()-1):
@@ -105,12 +88,8 @@ func _on_pop_2_finished() -> void:
 func Game_Start() -> void:
 	if Frog_Asset != null:
 		Frog_Asset.queue_free()
-	pass # Replace with function body.
 	frogs_processed = 0
-	frogs_saved = 0
-	frogs_killed = 0
-	nazis_killed = 0
-	nazis_saved = 0
+	score_keeper.Reset()
 	
 	InstanceFrog()
 	self.show()

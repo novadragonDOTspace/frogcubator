@@ -15,7 +15,8 @@ offset_left = 106.0
 offset_top = 547.0
 offset_right = 573.0
 offset_bottom = 651.0
-text = "Pump or Press this Button to Start the Game Game
+theme_override_font_sizes/font_size = 28
+text = "Pump or Press this Button to Start the Game
 "
 
 [node name="RadialBar" parent="." instance=ExtResource("2_bj8oo")]

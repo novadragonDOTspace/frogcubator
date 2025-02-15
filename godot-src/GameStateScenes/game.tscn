@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vuimade7i4xx"]
+[gd_scene load_steps=19 format=3 uid="uid://vuimade7i4xx"]
 
 [ext_resource type="Script" path="res://GameStateScenes/game.gd" id="1_u2lit"]
 [ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="1_yu5fs"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://bkh0ff5atbtes" path="res://Frog/Frösche/Nina.tres" id="9_g70jg"]
 [ext_resource type="Resource" uid="uid://ymrn2voc8wjs" path="res://Frog/Frösche/Nora.tres" id="10_eawq6"]
 [ext_resource type="Resource" uid="uid://bm63b0xho8u7c" path="res://Frog/Frösche/norman.tres" id="11_h17jo"]
+[ext_resource type="Script" path="res://GameStateScenes/score_keeper.gd" id="18_0tm4s"]
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_u2lit")
@@ -34,14 +35,6 @@ position = Vector2(-115, 112)
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("2_umwt1")
 offset = Vector2(1240, 53)
-
-[node name="DebugData" type="RichTextLabel" parent="."]
-offset_left = 46.0
-offset_top = 42.0
-offset_right = 689.0
-offset_bottom = 315.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
 
 [node name="EndTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -87,6 +80,9 @@ texture = ExtResource("7_63wfh")
 [node name="Timer" type="Timer" parent="Splosion"]
 wait_time = 0.5
 one_shot = true
+
+[node name="ScoreKeeper" type="Node" parent="."]
+script = ExtResource("18_0tm4s")
 
 [connection signal="finished" from="Pop2" to="." method="_on_pop_2_finished"]
 [connection signal="timeout" from="Splosion/Timer" to="." method="_on_splosion_timer_timeout"]

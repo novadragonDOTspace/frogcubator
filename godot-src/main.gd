@@ -44,14 +44,14 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_end_timer_timeout() -> void:
-		state = GlobalStateEnum.result
-		if $Game.Frog_Asset != null:
-			$Game.Frog_Asset.state = $Game.Frog_Asset.StateEnum.pause
-			$Game.Frog_Asset.LungenKollapsierer.paused = true
-			$Game.Frog_Asset.VitalTimer.paused = true
-		$Game.hide()
+	state = GlobalStateEnum.result
+	if $Game.Frog_Asset != null:
+		$Game.Frog_Asset.state = $Game.Frog_Asset.StateEnum.pause
+		$Game.Frog_Asset.LungenKollapsierer.paused = true
+		$Game.Frog_Asset.VitalTimer.paused = true
+	$Game.hide()
 		
-		$VictoryScreen.show()
+	$VictoryScreen.show()
 
 
 func _input(event: InputEvent) -> void:
