@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FrogAssets" load_steps=10 format=3 uid="uid://dl2hvcwlnc0ab"]
 
-[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_h75lp"]
+[ext_resource type="Script" uid="uid://dc2vqcqh7k3cb" path="res://Frog/frog_design.gd" id="1_h75lp"]
 [ext_resource type="Texture2D" uid="uid://cg2b5krnel3e8" path="res://Frog/Frösche/Frosch Daniel/frachiganz_Bart.png" id="1_j3iqh"]
 [ext_resource type="Texture2D" uid="uid://dupkhvs1olwfl" path="res://Frog/Frösche/Frosch Daniel/frachiganz_arm_links.png" id="2_ijk0y"]
 [ext_resource type="Texture2D" uid="uid://sayggyiinoom" path="res://Frog/Frösche/Frosch Daniel/frachiganz_arm_rechts.png" id="3_kyjnk"]
@@ -21,5 +21,4 @@ ArmLef = ExtResource("2_ijk0y")
 ArmRight = ExtResource("3_kyjnk")
 Happy = ExtResource("6_0hnfd")
 Accesoire1 = ExtResource("1_j3iqh")
-Accessoire1 = Vector2(0, 0)
 Augen = ExtResource("4_2w3d3")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FrogAssets" load_steps=10 format=3 uid="uid://r72ttc66doif"]
 
 [ext_resource type="Texture2D" uid="uid://dp055h8jxlr7e" path="res://Frog/Frösche/frosch naiko/frachiganz_arm_links.png" id="1_46jm3"]
-[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_f4f6g"]
+[ext_resource type="Script" uid="uid://dc2vqcqh7k3cb" path="res://Frog/frog_design.gd" id="1_f4f6g"]
 [ext_resource type="Texture2D" uid="uid://cy4fc64fhmrxr" path="res://Frog/Frösche/frosch naiko/frachiganz_arm_rechts.png" id="2_tc3pl"]
 [ext_resource type="Texture2D" uid="uid://bg3rpw28oy48g" path="res://Frog/Frösche/frosch naiko/frachiganz_augen.png" id="3_5vnb4"]
 [ext_resource type="Texture2D" uid="uid://dabsdccksyiwx" path="res://Frog/Frösche/frosch naiko/frachiganz_koerper.png" id="4_d82dd"]

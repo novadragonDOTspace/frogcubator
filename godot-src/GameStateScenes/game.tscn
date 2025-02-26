@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://vuimade7i4xx"]
 
-[ext_resource type="Script" path="res://GameStateScenes/game.gd" id="1_u2lit"]
+[ext_resource type="Script" uid="uid://dmlipd27j33va" path="res://GameStateScenes/game.gd" id="1_u2lit"]
 [ext_resource type="PackedScene" uid="uid://cj4hx1qygf2e2" path="res://Gurke/gurke.tscn" id="1_yu5fs"]
 [ext_resource type="PackedScene" uid="uid://ddy172d268tkv" path="res://Frog/frog.tscn" id="2_nmo6d"]
 [ext_resource type="Texture2D" uid="uid://dhcpt0nui4h3i" path="res://Graphics/schlauch.png" id="2_umwt1"]
-[ext_resource type="Script" path="res://Frog/frog_design.gd" id="3_fvfdi"]
-[ext_resource type="Script" path="res://camera_2d.gd" id="3_nbrdj"]
+[ext_resource type="Script" uid="uid://dc2vqcqh7k3cb" path="res://Frog/frog_design.gd" id="3_fvfdi"]
+[ext_resource type="Script" uid="uid://b0m7cyxhor6iw" path="res://camera_2d.gd" id="3_nbrdj"]
 [ext_resource type="AudioStream" uid="uid://c1ythgqhf53b1" path="res://SFX/balloon-pop-48030.mp3" id="4_ia3wh"]
 [ext_resource type="Resource" uid="uid://cm2ddj6vxm51w" path="res://Frog/Frösche/ben.tres" id="4_o8e31"]
 [ext_resource type="PackedScene" uid="uid://cysyw7so3y2ss" path="res://Misc/radial_bar.tscn" id="5_5tofm"]
@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://bkh0ff5atbtes" path="res://Frog/Frösche/Nina.tres" id="9_g70jg"]
 [ext_resource type="Resource" uid="uid://ymrn2voc8wjs" path="res://Frog/Frösche/Nora.tres" id="10_eawq6"]
 [ext_resource type="Resource" uid="uid://bm63b0xho8u7c" path="res://Frog/Frösche/norman.tres" id="11_h17jo"]
-[ext_resource type="Script" path="res://GameStateScenes/score_keeper.gd" id="18_0tm4s"]
+[ext_resource type="Script" uid="uid://71qc3yeh7rar" path="res://GameStateScenes/score_keeper.gd" id="18_0tm4s"]
 
 [node name="Game" type="CanvasLayer"]
 script = ExtResource("1_u2lit")

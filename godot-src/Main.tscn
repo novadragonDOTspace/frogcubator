@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://vetghxklv21f"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_cn5yq"]
+[ext_resource type="Script" uid="uid://dfkwarithnpdi" path="res://main.gd" id="1_cn5yq"]
 [ext_resource type="Resource" uid="uid://gc30vx0h4l4v" path="res://Frog/Frösche/Blondi.tres" id="4_7yntd"]
 [ext_resource type="PackedScene" uid="uid://vuimade7i4xx" path="res://GameStateScenes/game.tscn" id="23_2fnpq"]
 [ext_resource type="PackedScene" uid="uid://in2flthd38lx" path="res://GameStateScenes/title_screen.tscn" id="24_lgn6t"]

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FrogAssets" load_steps=11 format=3 uid="uid://cm2ddj6vxm51w"]
 
 [ext_resource type="Texture2D" uid="uid://d0h6pomie08wm" path="res://Frog/Frösche/Frosch Ben/frachiganz_arm_links.png" id="1_qq1e0"]
-[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_ubtvb"]
+[ext_resource type="Script" uid="uid://dc2vqcqh7k3cb" path="res://Frog/frog_design.gd" id="1_ubtvb"]
 [ext_resource type="Texture2D" uid="uid://d104ifhopqea3" path="res://Frog/Frösche/Frosch Ben/frachiganz_spatz.png" id="1_vm32v"]
 [ext_resource type="Texture2D" uid="uid://cx7u0oa5wsndq" path="res://Frog/Frösche/Frosch Ben/frachiganz_arm_rechts.png" id="2_rgv1y"]
 [ext_resource type="Texture2D" uid="uid://cvp5rin113pu4" path="res://Frog/Frösche/Frosch Ben/frachiganz_Augen.png" id="3_k8sq0"]

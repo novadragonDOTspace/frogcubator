@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FrogAssets" load_steps=10 format=3 uid="uid://bm63b0xho8u7c"]
 
 [ext_resource type="Texture2D" uid="uid://b7x5culuj7jdx" path="res://Frog/Frösche/Fosch normen 2/frachiganz_arm_links.png" id="1_tl7tx"]
-[ext_resource type="Script" path="res://Frog/frog_design.gd" id="1_ufso2"]
+[ext_resource type="Script" uid="uid://dc2vqcqh7k3cb" path="res://Frog/frog_design.gd" id="1_ufso2"]
 [ext_resource type="Texture2D" uid="uid://kkrrhrecfg7" path="res://Frog/Frösche/Fosch normen 2/frachiganz_arm_rechts.png" id="2_j165a"]
 [ext_resource type="Texture2D" uid="uid://brjnu7yukrtjg" path="res://Frog/Frösche/Fosch normen 2/frachiganz_Augen.png" id="3_jqo1e"]
 [ext_resource type="Texture2D" uid="uid://d4fq8fetoj6mr" path="res://Frog/Frösche/Fosch normen 2/frachiganz_koerper.png" id="4_v3kmq"]
