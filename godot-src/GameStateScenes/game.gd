@@ -25,11 +25,11 @@ func _ready() -> void:
 	FrogRessources.append(EvilFrogs.pick_random())
 	FrogRessources.append(EvilFrogs.pick_random())
 
-func Process(delta: float) -> void:
+func Process(_delta: float) -> void:
 	if !Frog_Asset == null:
 		$Schlauch.global_position = Frog_Asset.Schlauchpunkt.global_position
 		current_frog_timer.value = Frog_Asset.VitalTimer.time_left / Frog_Asset.VitalTimer.wait_time * 100
-		end_timer_bar.value = ceil($EndTimer.time_left)/ $EndTimer.wait_time * 100
+		end_timer_bar.value = ceil($EndTimer.time_left) / $EndTimer.wait_time * 100
 
 func InstanceFrog():
 	Frog_Asset = PackedSceneFrog.instantiate()
@@ -37,10 +37,9 @@ func InstanceFrog():
 	Frog_Asset.position = $FrogPos.position
 	Frog_Asset.death.connect(_on_frog_base_scene_death.bind())
 	Frog_Asset.vital.connect(_on_frog_base_scene_vital.bind())
-	Frog_Asset.LungenKollapsPerSekunde += randf_range(-frogs_processed, frogs_processed/2) + frogs_processed/2
+	Frog_Asset.LungenKollapsPerSekunde += randf_range(-frogs_processed, frogs_processed / 2) + frogs_processed / 2
 	Frog_Asset.initialize($FrogPos.position, FrogRessources.pick_random())
 	add_child(Frog_Asset)
-	
 	
 	
 func _on_frog_base_scene_death(allegiance: bool, cause: Variant, names: String) -> void:
@@ -65,8 +64,8 @@ func _on_frog_base_scene_vital(allegiance: bool, names: String) -> void:
 	score_keeper.SavedAFrog(allegiance)
 
 	var frog: FrogAssets = null
-	for i in range(FrogRessources.size()-1):
-		if frog==null:
+	for i in range(FrogRessources.size() - 1):
+		if frog == null:
 			if FrogRessources[i].Name == names:
 				frog = FrogRessources[i]
 	

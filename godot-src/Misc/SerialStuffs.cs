@@ -1,10 +1,6 @@
 using Godot;
 using System;
-using System.ComponentModel;
 using System.IO.Ports;
-using System.Threading;
-using Environment = Godot.Environment;
-
 
 public partial class SerialStuffs : Node
 {
@@ -24,12 +20,12 @@ public partial class SerialStuffs : Node
 			config.SetValue("Serial", "port", OS.GetName() == "Windows" ? "COM1" : "/dev/ttyACM0");
 			config.Save("user://pumpconfig.cfg");
 		}
-	
-		
-		
-		
-		
-		port = new SerialPort((String)config.GetValue("Serial","port"));
+
+
+
+
+
+		port = new SerialPort((String)config.GetValue("Serial", "port"));
 		port.BaudRate = 9600;
 		port.Parity = Parity.None;
 		port.StopBits = StopBits.One;
